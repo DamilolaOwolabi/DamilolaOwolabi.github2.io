@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. SMU. TAMU. PGE. Ferreira.
+subtitle: <a href='#'>Affiliations</a>: SMU. TAMU. PGE. Ferreira.
 
 profile:
   align: right
