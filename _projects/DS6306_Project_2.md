@@ -8,7 +8,7 @@ category: work
 ---
 
 
-[Please try out my Rshinyapp in order to experience my model’s prediction rate :](https://oluwadamilolaowolabi.shinyapps.io/DS_6372_Project_2/)
+Please try out my Rshinyapp in order to experience my model’s prediction rate : [RShiny](https://oluwadamilolaowolabi.shinyapps.io/DS_6372_Project_2/)
 
 
 <div class="row">
