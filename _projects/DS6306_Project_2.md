@@ -8,8 +8,9 @@ category: work
 ---
 
 
-[Please try out my Rshinyapp in order to experience my model’s prediction rate :]https://oluwadamilolaowolabi.shinyapps.io/DS_6372_Project_2/
-Heres a Youtube Link to my presentation:
+[Please try out my Rshinyapp in order to experience my model’s prediction rate :](https://oluwadamilolaowolabi.shinyapps.io/DS_6372_Project_2/)
+
+
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         <iframe width="560" height="315" src="https://youtu.be/hwyr3ZPVgIQ" frameborder="0" allowfullscreen></iframe>
