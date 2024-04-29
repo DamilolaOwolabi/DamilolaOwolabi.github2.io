@@ -34,7 +34,7 @@ My aim is to provide valuable insight on what factors affects attrition rate and
 
 ## LOADING LIBRARIES
 
-    ```js
+    ---js
     library(ggplot2) #For data visualization
     library(dplyr)  # For data manipulation
     library(tidyverse)
@@ -44,7 +44,7 @@ My aim is to provide valuable insight on what factors affects attrition rate and
     library(pROC) # for the ROC curve
     library(class) #calling the knn function
     library(e1071)  # for naiveBayes function
-    ```
+    ---
     
     
 ##  GETTING THE CSV FILE FROM AWS USING AWS.S3 PACKAGES
@@ -230,6 +230,15 @@ From our summary Statistics, there are 28 numerical variables and 8 categorical 
       }
     }
     ---
+    
+<div style="overflow-x: scroll; white-space: nowrap;">
+    ![Image 1](image1.jpg)
+    ![Image 2](image2.jpg)
+    ![Image 3](image3.jpg)
+    <!-- Add more images as needed -->
+</div>
+    
+
     
 
         
