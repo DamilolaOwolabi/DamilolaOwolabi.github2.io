@@ -88,18 +88,12 @@ My aim is to provide valuable insight on what factors affects attrition rate and
                         object = "Case2PredictionsClassifyEXAMPLE.csv")
     
     
-    #Talent_Train; Talent_Test_Attrition; Talent_Test_Salary
-    
-    names(Talent_Train) # looking at the variables in the dataset
-    
     #How many variables in the dataset ? 36
     
     #Our response variable will be based on the attrition variable
     
-    head(Example) #Looking at our example regression
-    
-    head(Example2) #Looking at our example regression
     ---
 
-    
+From the Train talent data, there are 870 random employees (rows), all ordered by IDD, and 36 variables (columns).
+
     
