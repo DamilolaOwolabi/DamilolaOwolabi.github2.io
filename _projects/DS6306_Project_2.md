@@ -2,7 +2,7 @@
 layout: page
 title: Frito Lay Talent Attrition Analysis
 description: The project aims to analyse the attrition rate and monthly income among employees in the United States.
-img: assets/img/ds_6306_PROJECT_2_PIC2.0.jpeg
+img: assets/img/DS_6306_Project_2/ds_6306_PROJECT_2_PIC2.0.jpeg
 importance: 1
 category: work
 ---
@@ -208,6 +208,8 @@ From our summary Statistics, there are 28 numerical variables and 8 categorical 
     
 ## VISUALIZING THE NUMERICAL VARIABLES SUMMARY STATISTICS
 
+Since the variables are a lot, and i plan on saving time, I plan using a for loop to iterate through the variables and plot their box plots to visualize their summary statistics
+
     ---js
         for (Variable in names(Talent_Train)){
       # Check if the column is numeric
@@ -232,9 +234,9 @@ From our summary Statistics, there are 28 numerical variables and 8 categorical 
     ---
     
 <div style="overflow-x: scroll; white-space: nowrap;">
-    ![Image 1](image1.jpg)
-    ![Image 2](image2.jpg)
-    ![Image 3](image3.jpg)
+    ![Image 1](assets/img/DS_6306_Project_2/pic_1.png)
+    ![Image 2](assets/img/DS_6306_Project_2/pic_2.png)
+    ![Image 3](assets/img/DS_6306_Project_2/pic_3.png)
     <!-- Add more images as needed -->
 </div>
     
