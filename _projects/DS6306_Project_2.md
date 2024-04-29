@@ -8,7 +8,7 @@ category: work
 ---
 
 
-Please try out my Rshinyapp in order to experience my model’s prediction rate : [RShiny](https://oluwadamilolaowolabi.shinyapps.io/DS_6372_Project_2/)
+Please try out my interactive Rshinyapp to experience my model’s prediction rate : [RShiny](https://oluwadamilolaowolabi.shinyapps.io/DS_6372_Project_2/)
 
 
 <div class="row">
@@ -34,7 +34,7 @@ My aim is to provide valuable insight on what factors affects attrition rate and
 
 ## LOADING LIBRARIES
 
-    ---
+    ---js
     library(ggplot2) #For data visualization
     library(dplyr)  # For data manipulation
     library(tidyverse)
@@ -49,7 +49,7 @@ My aim is to provide valuable insight on what factors affects attrition rate and
     
 ##  GETTING THE CSV FILE FROM AWS USING AWS.S3 PACKAGES
 
-    ---
+    ---js
     Sys.setenv("AWS_ACCESS_KEY_ID" = "MY_ACCESS_ID",
                "AWS_SECRET_ACCESS_KEY" = MY_SECRET_ACCESS_KEY",
                "AWS_DEFAULT_REGION" = "MY_DEFAULT_REGION")
@@ -95,5 +95,39 @@ My aim is to provide valuable insight on what factors affects attrition rate and
     ---
 
 From the Train talent data, there are 870 random employees (rows), all ordered by IDD, and 36 variables (columns).
+
+
+#### LOOKING AT THE DATASET 
+
+    ---js
+    set.seed(1234)
+
+    # Set levels for Talent_Train
+    Talent_Train$Attrition <-factor(Talent_Train$Attrition, levels=c('Yes','No')) #factoring the response variable
+    Talent_Train <- Talent_Train %>% mutate(Over18_binary = ifelse(Over18 == "Y", 1, 0)) # breaking the Over18 variable into 2, because it has only one level, and keeps throwing an error.
+    
+    Talent_Train <- subset(Talent_Train, select = -c(Over18)) #removing the over18 column
+    
+    # Set levels for Talent_Test_Salary
+    Talent_Test_Salary$Attrition <-factor(Talent_Test_Salary$Attrition, levels=c('No','Yes')) #factoring the response variable
+    Talent_Test_Salary <- Talent_Test_Salary %>% mutate(Over18_binary = ifelse(Over18 == "Y", 1, 0)) # breaking the Over18 variable into 2, because it has only one level.
+    Talent_Test_Salary <- subset(Talent_Test_Salary , select = -c(Over18)) #removing the over18 column
+    
+    yes_data <- Talent_Train[Talent_Train$Attrition == 'Yes',] # 4250
+    no_data <- Talent_Train[Talent_Train$Attrition == 'No',] # 31918
+    ---
+    
+The rate of Yes Attrition to no Attrition is 140: 730. Which presents the issue of an unbalanced data. This might be costly to sensitivity metric. Thankfully, i come equipped with knowledge from my Data Science professor (Prof. Bivin Sadler) on how to resolve this.
+
+
+## ADDRESSING MISSING VALUES
+It is important to look at missing values earlier on, as it might be affect our models
+    ---js
+    NaSum <- sum(is.na(Talent_Train)) #check for missing values in the Talent Dataset
+    
+    # Print the total count of missing values
+    print(paste("Total missing values:", NaSum))
+    ---
+>> <[1] "Total missing values: 0"/->
 
     
