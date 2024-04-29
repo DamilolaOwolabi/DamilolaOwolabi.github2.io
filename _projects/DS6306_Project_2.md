@@ -34,7 +34,7 @@ My aim is to provide valuable insight on what factors affects attrition rate and
 
 ## LOADING LIBRARIES
 
-    ---js
+    ```js
     library(ggplot2) #For data visualization
     library(dplyr)  # For data manipulation
     library(tidyverse)
@@ -44,7 +44,7 @@ My aim is to provide valuable insight on what factors affects attrition rate and
     library(pROC) # for the ROC curve
     library(class) #calling the knn function
     library(e1071)  # for naiveBayes function
-    ---
+    ```
     
     
 ##  GETTING THE CSV FILE FROM AWS USING AWS.S3 PACKAGES
@@ -122,12 +122,117 @@ The rate of Yes Attrition to no Attrition is 140: 730. Which presents the issue 
 
 ## ADDRESSING MISSING VALUES
 It is important to look at missing values earlier on, as it might be affect our models
+
     ---js
     NaSum <- sum(is.na(Talent_Train)) #check for missing values in the Talent Dataset
     
     # Print the total count of missing values
     print(paste("Total missing values:", NaSum))
     ---
+    
 >> <[1] "Total missing values: 0"/->
+
+From the results above, there appears to be no missing values in the Dataset (thank God!!)
+
+
+
+
+# SALARY
+
+
+## Looking at the Summary Statistics 
+
+    ---js
+        
+    # Using a for loop to get the summary statistics
+    
+    # Initialize an empty list 
+    numerical_count <- 0 # There are 27
+    categorical_count <- 0 # There are 9
+    summary_stats_numerical <- list() # Storing summary statistics for the numerical variables
+    summary_stats_categorical <- list() # Storing summary statistics for the categorical variables
+    summary_stats2_categorical <- list() # Storing summary statistics for the categorical variables
+    categorical_variables <- list() #Storing categorical variables
+    numerical_variables <- list() #Storing numerical variables
+    
+    # Iterate over each column in the data frame
+    for (Variable in names(Talent_Train)) {
+      # Calculate summary statistics for numeric variables
+      if (is.numeric(Talent_Train[[Variable]])) {
+        summary_stats_numerical[[Variable]] <- summary(Talent_Train[[Variable]])
+        numerical_variables[[Variable]] <- Variable
+        numerical_count <- numerical_count + 1
+      } else {
+        # For non-numeric variables, calculate frequency table
+        summary_stats_categorical[[Variable]] <- table(Talent_Train[[Variable]])
+        summary_stats2_categorical[[Variable]] <- summary(Talent_Train[[Variable]])
+        categorical_variables[[Variable]] <- Variable
+        categorical_count <- categorical_count + 1
+      }
+    }
+    
+    cat("There are  ", numerical_count, " numerical variables \n")
+    cat("The numerical variables are: ")
+    #Printing the numerical variables
+    for (variable in names(numerical_variables)){
+      print(numerical_variables[[variable]])
+    }
+    cat("\n")
+    
+    cat("There are  ", categorical_count, " categorical variables \n")
+    cat("The categorical variables are: ")
+    #Printing the categorical variables
+    for (variable in names(categorical_variables)){
+      print(categorical_variables[[variable]])
+    }
+    cat("\n")
+    
+    # Print summary statistics for each numerical variable
+    for (col_name in names(summary_stats_numerical)) {
+      cat("Summary statistics for", col_name, ":\n")
+      print(summary_stats_numerical[[col_name]])
+      cat("\n")
+    }
+    
+    # Print summary statistics for each categorical variable
+    for (col_name in names(summary_stats_categorical)) {
+      cat("Summary statistics for", col_name, ":\n")
+      print(summary_stats_categorical[[col_name]])
+      #print(summary_stats2_categorical[[col_name]])
+      cat("\n")
+    }
+    ---
+    
+From our summary Statistics, there are 28 numerical variables and 8 categorical variables. All adding to 36 variables. Some variables that swtood out were the EmployeeCount, which have a constant 1 values, and the Job Involvement, which values ranges between 1 and 4, hence providing a really low variance,.    
+    
+    
+## VISUALIZING THE NUMERICAL VARIABLES SUMMARY STATISTICS
+
+    ---js
+        for (Variable in names(Talent_Train)){
+      # Check if the column is numeric
+      if (is.numeric(Talent_Train[[Variable]])) {
+        # Create a box plot for numeric variables
+       plot <-  ggplot(Talent_Train, aes_string(x = , y = Variable)) +
+          geom_boxplot(color = "black", fill = "lightblue") +
+          labs(title = paste("Box Plot of", Variable)) + 
+          geom_text(aes(label = paste("Median:", median(Talent_Train[[Variable]]), "\n", 
+                                      "Mean: ", mean(Talent_Train[[Variable]]), "\n", 
+                                      "SD: ", sd(Talent_Train[[Variable]]),
+                                      "1st Quarter: ", summary(Talent_Train[[Variable]])[2], "\n",
+                                      "3rd Quarter: ", summary(Talent_Train[[Variable]])[4], "\n",
+                                      "Min: ", summary(Talent_Train[[Variable]])[1], "\n",
+                                      "Max: ", summary(Talent_Train[[Variable]])[5], "\n")),
+                    x = 0.4, y = max(Talent_Train[[Variable]]), hjust = 1, vjust = 1, size = 3, color = "blue") 
+       
+       # Print the plot
+        print(plot)
+      }
+    }
+    ---
+    
+
+        
+
 
     
