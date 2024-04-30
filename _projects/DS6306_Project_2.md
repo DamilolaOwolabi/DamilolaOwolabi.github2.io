@@ -130,7 +130,7 @@ It is important to look at missing values earlier on, as it might be affect our 
     print(paste("Total missing values:", NaSum))
     ---
     
-<[1] "Total missing values: 0"/->
+> [1] "Total missing values: 0"
 
 From the results above, there appears to be no missing values in the Dataset (thank God!!)
 
