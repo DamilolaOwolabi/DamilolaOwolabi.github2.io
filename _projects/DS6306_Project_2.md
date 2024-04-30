@@ -267,25 +267,27 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
 
 New change
 
-<div class="scroll-container">
-    <div><img src="assets/img/DS_6306_Project_2/pic_1.png"></div>
-		    <div><img src="assets/img/DS_6306_Project_2/pic_2.png"></div>
-		    <div><img src="assets/img/DS_6306_Project_2/pic_3.png"></div>
-		</div>
-</div>
-
-
-div.scroll-container {
-  background-color: #333;
-  overflow: auto;
-  white-space: nowrap;
-  padding: 10px;
-}
-
-div.scroll-container img {
-  padding: 10px;
-}
-
+<html>
+  <div class="scroll-container">
+      <div><img src="assets/img/DS_6306_Project_2/pic_1.png"></div>
+  		    <div><img src="assets/img/DS_6306_Project_2/pic_2.png"></div>
+  		    <div><img src="assets/img/DS_6306_Project_2/pic_3.png"></div>
+  		</div>
+  </div>
+  
+  <style>
+    div.scroll-container {
+      background-color: #333;
+      overflow: auto;
+      white-space: nowrap;
+      padding: 10px;
+    }
+  </style>
+  
+  div.scroll-container img {
+    padding: 10px;
+  }
+</html>
 
     
 
