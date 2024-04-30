@@ -276,14 +276,14 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
 </div>
 </html>
 
-<css></css>
+<css>
 .ads_sponsors div img{
 	width:200px;
 	height:150px;
 }
 </css>
 
-<js></js>
+<js>
  $('.ads_sponsors').slick({
 	 autoplay: true,
 	 autoplaySpeed: 1000,
