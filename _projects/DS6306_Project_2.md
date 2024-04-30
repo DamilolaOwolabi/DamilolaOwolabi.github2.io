@@ -266,13 +266,15 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
 </div>
 
 
-Edit # 3
-<div style="overflow-x: auto; white-space: nowrap; padding: 10px; background-color: #333">
-    ![Image 1](assets/img/DS_6306_Project_2/pic_1.png)
-    ![Image 2](assets/img/DS_6306_Project_2/pic_2.png)
-    ![Image 3](assets/img/DS_6306_Project_2/pic_3.png)
-    ![Image 4](assets/img/DS_6306_Project_2/pic_4.png)
-    ![Image 5](assets/img/DS_6306_Project_2/pic_5.png)
+Edit # 4
+<div class - "row" style="overflow-x: auto; white-space: nowrap; padding: 10px; background-color: #333">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 <div class="caption">
     List of summary statistics for the numerical varianles.
 </div>
