@@ -265,6 +265,8 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
     <!-- Add more images as needed -->
 </div>
 
+New change
+
 <div class="scroll-container">
     <div><img src="assets/img/DS_6306_Project_2/pic_1.png"></div>
 		    <div><img src="assets/img/DS_6306_Project_2/pic_2.png"></div>
