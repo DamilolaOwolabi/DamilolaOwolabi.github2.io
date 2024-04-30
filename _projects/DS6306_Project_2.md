@@ -265,7 +265,8 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
     <!-- Add more images as needed -->
 </div>
 
-  
+
+Edit # 1
 <div style="overflow-x: scroll; white-space: nowrap;">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_1.png" title="example image" class="img-fluid rounded z-depth-1" %}
@@ -277,8 +278,9 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_3.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
+
 <div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
+    List of summary statistics for the numerical varianles.
 </div>
     
 
