@@ -264,10 +264,9 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
     ![Image 28](assets/img/DS_6306_Project_2/pic_28.png)
     <!-- Add more images as needed -->
 </div>
-    
-{% raw %}
 
-```html
+
+<html lang="en">
 <div class="container">
   <div class="ads_sponsors">
     <div><img src="assets/img/DS_6306_Project_2/pic_1.png"></div>
@@ -275,17 +274,16 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
 		    <div><img src="assets/img/DS_6306_Project_2/pic_3.png"></div>
 		</div>
 </div>
+</html>
 
-```
-
-```class
+<css></css>
 .ads_sponsors div img{
 	width:200px;
 	height:150px;
 }
-```
+</css>
 
-```js
+<js></js>
  $('.ads_sponsors').slick({
 	 autoplay: true,
 	 autoplaySpeed: 1000,
@@ -293,9 +291,7 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
    slidesToScroll: 1,
    arrows: false
  });
-```
-{% endraw %}
-
+</js>
     
 
         
