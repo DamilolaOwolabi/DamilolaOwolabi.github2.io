@@ -269,25 +269,18 @@ New change 4
 
 <html>
   <div class="scroll-container">
-      <div><img path="assets/img/DS_6306_Project_2/pic_1.png"></div>
-  		    <div><img path="assets/img/DS_6306_Project_2/pic_2.png"></div>
-  		    <div><img path="assets/img/DS_6306_Project_2/pic_3.png"></div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path=assets/img/DS_6306_Project_2/pic_1.png title="image 1" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path=assets/img/DS_6306_Project_2/pic_2.png title="image 2" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path=assets/img/DS_6306_Project_2/pic_3.png title="image 3" class="img-fluid rounded z-depth-1" %}
+    </div>
+    
   </div>
   
-  <style>
-    div.scroll-container {
-      background-color: #333;
-      overflow: auto;
-      white-space: nowrap;
-      padding: 10px;
-    }
-  </style>
-  
-  div.scroll-container img {
-    padding: 10px;
-  }
-  
-</html>
 
     
 
