@@ -265,12 +265,37 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
     <!-- Add more images as needed -->
 </div>
     
-<div style="overflow-x: auto; white-space: nowrap;">
-    <img src="assets/img/DS_6306_Project_2/pic_1.png" style="display: inline-block; max-width: 100px; margin-right: 10px;">
-    <img src="assets/img/DS_6306_Project_2/pic_2.png" style="display: inline-block; max-width: 100px; margin-right: 10px;">
-    <img src="assets/img/DS_6306_Project_2/pic_3.png" style="display: inline-block; max-width: 100px; margin-right: 10px;">
-    <!-- Add more images as needed -->
+{% raw %}
+
+```html
+<div class="container">
+  <div class="ads_sponsors">
+    <div><img src="assets/img/DS_6306_Project_2/pic_1.png"></div>
+		    <div><img src="assets/img/DS_6306_Project_2/pic_2.png"></div>
+		    <div><img src="assets/img/DS_6306_Project_2/pic_3.png"></div>
+				    <div><img 
+	</div>
 </div>
+
+```
+
+```class
+.ads_sponsors div img{
+	width:200px;
+	height:150px;
+}
+```
+
+```js
+ $('.ads_sponsors').slick({
+	 autoplay: true,
+	 autoplaySpeed: 1000,
+	 slidesToShow: 4,
+   slidesToScroll: 1,
+   arrows: false
+ });
+```
+{% endraw %}
 
     
 
