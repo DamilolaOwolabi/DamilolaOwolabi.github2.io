@@ -265,14 +265,13 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
     <!-- Add more images as needed -->
 </div>
 
-New change 2
+New change 3
 
 <html>
   <div class="scroll-container">
       <div><img path="assets/img/DS_6306_Project_2/pic_1.png"></div>
   		    <div><img path="assets/img/DS_6306_Project_2/pic_2.png"></div>
   		    <div><img path="assets/img/DS_6306_Project_2/pic_3.png"></div>
-  		</div>
   </div>
   
   <style>
