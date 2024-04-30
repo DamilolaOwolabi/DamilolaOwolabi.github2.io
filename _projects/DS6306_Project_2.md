@@ -268,10 +268,11 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
 
 Edit # 3
 <div style="overflow-x: auto; white-space: nowrap; padding: 10px; background-color: #333">
-  <img src="assets/img/DS_6306_Project_2/pic_1.pngalt="Cinque Terre">
-  <img src=assets/img/DS_6306_Project_2/pic_1.png alt="Forest">
-  <img src=assets/img/DS_6306_Project_2/pic_1.png alt="Northern Lights">
-  <img src=assets/img/DS_6306_Project_2/pic_1.png alt="Mountains">
+    ![Image 1](assets/img/DS_6306_Project_2/pic_1.png)
+    ![Image 2](assets/img/DS_6306_Project_2/pic_2.png)
+    ![Image 3](assets/img/DS_6306_Project_2/pic_3.png)
+    ![Image 4](assets/img/DS_6306_Project_2/pic_4.png)
+    ![Image 5](assets/img/DS_6306_Project_2/pic_5.png)
 <div class="caption">
     List of summary statistics for the numerical varianles.
 </div>
