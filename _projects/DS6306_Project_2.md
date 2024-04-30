@@ -265,19 +265,11 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
     <!-- Add more images as needed -->
 </div>
     
-<div class="gallery">
-    <div class="row">
-        <div class="col-sm mt-3 mt-md-0">
-            ![Image 1](assets/img/DS_6306_Project_2/pic_1.png)
-        </div>
-        <div class="col-sm mt-3 mt-md-0">
-            ![Image 2](assets/img/DS_6306_Project_2/pic_2.png)
-        </div>
-        <div class="col-sm mt-3 mt-md-0">
-            ![Image 3](assets/img/DS_6306_Project_2/pic_3.png)
-        </div>
-        <!-- Add more images as needed -->
-    </div>
+<div style="overflow-x: auto; white-space: nowrap;">
+    <img src="assets/img/DS_6306_Project_2/pic_1.png" style="display: inline-block; max-width: 100px; margin-right: 10px;">
+    <img src="assets/img/DS_6306_Project_2/pic_2.png" style="display: inline-block; max-width: 100px; margin-right: 10px;">
+    <img src="assets/img/DS_6306_Project_2/pic_3.png" style="display: inline-block; max-width: 100px; margin-right: 10px;">
+    <!-- Add more images as needed -->
 </div>
 
     
