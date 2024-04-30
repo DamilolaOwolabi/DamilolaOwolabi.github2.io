@@ -269,9 +269,9 @@ New change 2
 
 <html>
   <div class="scroll-container">
-      <div><img src="assets/img/DS_6306_Project_2/pic_1.png"></div>
-  		    <div><img src="assets/img/DS_6306_Project_2/pic_2.png"></div>
-  		    <div><img src="assets/img/DS_6306_Project_2/pic_3.png"></div>
+      <div><img path="assets/img/DS_6306_Project_2/pic_1.png"></div>
+  		    <div><img path="assets/img/DS_6306_Project_2/pic_2.png"></div>
+  		    <div><img path="assets/img/DS_6306_Project_2/pic_3.png"></div>
   		</div>
   </div>
   
@@ -287,6 +287,7 @@ New change 2
   div.scroll-container img {
     padding: 10px;
   }
+  
 </html>
 
     
