@@ -267,8 +267,7 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
 
 
 <html lang="en">
-<div class="container">
-  <div class="ads_sponsors">
+<div class="scroll-container">
     <div><img src="assets/img/DS_6306_Project_2/pic_1.png"></div>
 		    <div><img src="assets/img/DS_6306_Project_2/pic_2.png"></div>
 		    <div><img src="assets/img/DS_6306_Project_2/pic_3.png"></div>
@@ -277,21 +276,18 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
 </html>
 
 <css>
-.ads_sponsors div img{
-	width:200px;
-	height:150px;
+div.scroll-container {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+div.scroll-container img {
+  padding: 10px;
 }
 </css>
 
-<js>
- $('.ads_sponsors').slick({
-	 autoplay: true,
-	 autoplaySpeed: 1000,
-	 slidesToShow: 4,
-   slidesToScroll: 1,
-   arrows: false
- });
-</js>
     
 
         
