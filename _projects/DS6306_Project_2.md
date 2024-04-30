@@ -265,10 +265,9 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
     <!-- Add more images as needed -->
 </div>
 
-New change 4
+New change 5
 
-<html>
-  <div class="scroll-container">
+<div class="scroll-container">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path=assets/img/DS_6306_Project_2/pic_1.png title="image 1" class="img-fluid rounded z-depth-1" %}
     </div>
@@ -279,7 +278,7 @@ New change 4
         {% include figure.liquid loading="eager" path=assets/img/DS_6306_Project_2/pic_3.png title="image 3" class="img-fluid rounded z-depth-1" %}
     </div>
     
-  </div>
+</div>
   
 
     
