@@ -11,16 +11,10 @@
 - title: Education
   type: time_table
   contents:
-    - title: Msc.
+    - title: Msc.in Data Science
       institution: Southern Methodist University, Austin, TX
-      year: 1905
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
+      year: Aug. 2023 - Aug 2025
+      
     - title: Federal teaching diploma
       institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
       year: 1900
