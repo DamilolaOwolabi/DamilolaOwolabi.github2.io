@@ -4,7 +4,7 @@ title: Apps
 permalink: /Apps/
 description: A growing collection of the Apps built throughout my Data Science Journey.
 nav: true
-nav_order: 3
+nav_order: 
 display_categories: [School, fun]
 horizontal: false
 ---
