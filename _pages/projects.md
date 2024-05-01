@@ -2,10 +2,10 @@
 layout: page
 title: projects
 permalink: /projects/
-description: A growing collection of the projects done throughout my Data Science Journey.
+description: A growing collection of projects done throughout my Data Science journey.
 nav: true
 nav_order: 3
-display_categories: [School, fun]
+display_categories: [work, fun]
 horizontal: false
 ---
 

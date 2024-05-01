@@ -4,7 +4,7 @@ title: videos
 permalink: /videos/
 description: A growing collection of the Youtube videos done throughout my Data Science Journey.
 nav: true
-nav_order: 9
+nav_order: 8
 display_categories: [School, fun]
 horizontal: false
 ---
