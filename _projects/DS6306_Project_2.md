@@ -460,7 +460,7 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
 </div>
 
 <div class="caption">
-    List of plots of the response variable vs. the various dependent variables (Please scroll through to look at the plots.)
+    List of plots of the response variable (Salary) vs. the various dependent variables (Please scroll through to look at the plots.)
 </div>
     
 - Employees in Job Level 2 seems to be paid the best
@@ -517,13 +517,17 @@ Looking at how each variable in the model, significantly impacts our response va
       theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))  # Rotate x-axis labels for better readability
     ---
 
-<div style="overflow-x: auto; white-space: nowrap; backgroun-color: #333; padding: 5px;">
+<div style="overflow-x: auto; white-space: nowrap; background-color: #333; padding: 5px;">
     <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/GROUP_C/Pic_1.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
-        <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/GROUP_C/Pic_2.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
+</div>
+
+<div class="caption">
+    2 different plots of the p-value distribution (Please scroll through to look at the plots.)
 </div>
 
 From the plot above, we can see that the top 5 highly significant values with respect to the response variable y in terms of its relative most significant to least significant variables are JobLevel, JobRole, 	TotalWorkingYears, BusinessTravel, YearsSinceLastPromotion
@@ -735,7 +739,117 @@ Looking at the Exploratory data analysis to visualize the relation ship between 
     }
     ---
     
-    
+ <div style="overflow-x: auto; white-space: nowrap; backgroun-color: #333; padding: 5px;">
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic1.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D_C/Pic2.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic3.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic4.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic5.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic6.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic7.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic8.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic9.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic10.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic11.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic12.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic13.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic14.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic15.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic16.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic17.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic18.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic19.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic20.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic21.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic22.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic23.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic24.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic25.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic26.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic27.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic28.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic29.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic30.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic31.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic32.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic33.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic34.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic35.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    List of plots of the response variable (Attrition) vs. the various dependent variables (Please scroll through to look at the plots.)
+</div>  
     
 - There seems to be a high turnover rate among employees with zero stock options level.
 - There is a higher level of Employee turnover Rate among the employees in Job Level 
@@ -746,5 +860,53 @@ Looking at the Exploratory data analysis to visualize the relation ship between 
 - There are similar distribution among the monthly income and the no attrition rates.
 
 
+## LOOKING AT THE PVALUE DISTRIBUTIONS FOR THE ATTRITION
+
+Looking at how each variable in the model, significantly impacts our response variable (MonthlyIncome)
+
+    ---
+    model <-glm(Attrition ~ ., data = Talent_Train, family="binomial")
+
+    # Extract variable names
+    variable_names <- rownames(summary(model)$coefficients)
+    
+    # getting the  p-values from the model3
+    p_values <- summary(model)$coefficients[, 4]  # Assuming p-values are in the 4th column of the summary table
+    p_values <- data.frame(p_values)$p_values
+    
+    df <- data.frame(variable_names, p_values) #combining the pvalues and variable names into a dataframe
+    
+    df <- df[!df$p_value == 0 , ] #removing varaiables with pvalue = 0
+    df$p_values <- log(df$p_values)  * -1
+    
+    # Rank p-values in the dataset from max to min
+    df$rank <- rank(-df$p_value)
+    
+    sorted_df <- df[order(df$rank), ]
+    
+    sorted_df
+    
+    
+    barplot(df$p_values, 
+            main = "P-values of Regression Coefficients less than the significance level 0.05", 
+            xlab = "Variables", 
+            ylab = "P-value",
+            names.arg = df$variable_names,
+            las = 2,  # Rotate x-axis labels vertically for better readability
+            col = "steelblue",  # Set color of bars
+            ylim = c(exp(0.05) * -1, max(sorted_df$p_values) * 1.2)  # Set ylim from the significance level to the max p-values
+            
+    )
+    
+    library(ggplot2)
+    ggplot(sorted_df,aes(variable_names,p_values, fill = ifelse(p_values > (exp(0.05) * -1), "Positive", "Negative"))) + #filtering just the highly significant p-values
+      geom_bar(stat="identity", fill = "skyblue") + 
+      #geom_text(aes(label = variable_names), vjust = -0.5) +  # Add text labels on top of bars
+      scale_fill_manual(values = c("Positive" = "skyblue", "Negative" = "salmon")) +
+      labs(x = "Variables", y = "P-values", title = "P-values of Regression Coefficients less than the significance level 0.05") +
+      theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))  # Rotate x-axis labels for better readability
+    ---
+
+From the plot above, we can see that the top 5 highly significant values with respect to the response variable Attrition in terms of its relative most significant to least significant variables are OverTime, JobInvolvement, JobSatisfaction, NumCompaniesWorked, YearsSinceLastPromotion
 
 
