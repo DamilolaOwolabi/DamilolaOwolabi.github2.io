@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /courses/
-title: course
+title: courses
 description: This pae Highlights the courses i have taken over the course of my Data Science Journey
 nav: true
 nav_order: 6
