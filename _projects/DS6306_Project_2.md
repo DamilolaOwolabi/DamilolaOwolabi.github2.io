@@ -97,7 +97,7 @@ My aim is to provide valuable insight on what factors affects attrition rate and
 From the Train talent data, there are 870 random employees (rows), all ordered by IDD, and 36 variables (columns).
 
 
-#### LOOKING AT THE DATASET 
+## LOOKING AT THE DATASET 
 
     ---
     set.seed(1234)
@@ -471,6 +471,280 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
 - Human Resources Employees seem to be the lowest paid
   
 
+## LOOKING AT THE PVALUE DISTRIBUTIONS FOR THE MONTHLY INCOME
 
+Looking at how each variable in the model, significantly impacts our response variable (MonthlyIncome)
 
+    ---
     
+    model <-lm(MonthlyIncome ~ ., data = Talent_Train)
+
+    # Extract variable names
+    variable_names <- rownames(summary(model)$coefficients)
+    
+    # getting the  p-values from the model3
+    p_values <- summary(model)$coefficients[, 4]  # Assuming p-values are in the 4th column of the summary table
+    p_values <- data.frame(p_values)$p_values
+    
+    df <- data.frame(variable_names, p_values) #combining the pvalues and variable names into a dataframe
+    
+    df <- df[!df$p_value == 0 , ] #removing varaiables with pvalue = 0
+    df$p_values <- log(df$p_values)  * -1
+    
+    # Rank p-values in the dataset from max to min
+    df$rank <- rank(-df$p_value)
+    
+    sorted_df <- df[order(df$rank), ]
+    
+    
+    barplot(df$p_values, 
+            main = "P-values of Regression Coefficients less than the significance level 0.05", 
+            xlab = "Variables", 
+            ylab = "P-value",
+            names.arg = df$variable_names,
+            las = 2,  # Rotate x-axis labels vertically for better readability
+            col = "steelblue",  # Set color of bars
+            ylim = c(exp(0.05) * -1, max(sorted_df$p_values) * 1.2)  # Set ylim from the significance level to the max p-values
+            
+    )
+    
+    library(ggplot2)
+    ggplot(sorted_df,aes(variable_names,p_values, fill = ifelse(p_values > (exp(0.05) * -1), "Positive", "Negative"))) + #filtering just the highly significant p-values
+      geom_bar(stat="identity", fill = "skyblue") + 
+      #geom_text(aes(label = variable_names), vjust = -0.5) +  # Add text labels on top of bars
+      scale_fill_manual(values = c("Positive" = "skyblue", "Negative" = "salmon")) +
+      labs(x = "Variables", y = "P-values", title = "P-values of Regression Coefficients less than the significance level 0.05") +
+      theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))  # Rotate x-axis labels for better readability
+    ---
+
+<div style="overflow-x: auto; white-space: nowrap; backgroun-color: #333; padding: 5px;">
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/GROUP_C/Pic_1.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+        <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/GROUP_C/Pic_2.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+From the plot above, we can see that the top 5 highly significant values with respect to the response variable y in terms of its relative most significant to least significant variables are JobLevel, JobRole, 	TotalWorkingYears, BusinessTravel, YearsSinceLastPromotion
+
+
+## USING FORWARD SELECTION TO GET THE BEST REGRESSION MODEL WITH THE LOWEST RMSE FOR THE MONTHLY INCOME
+
+My plan is to iterate through finding the logistic regression with the min rmse value when interacting our response variable with various predictors. Then ill pick the variable with the min rmse. Ill add my min rmse variable to the model, then use the next iteration to get the min rmse when add another variable with our prior variable, then interact them with our response variable. Then i repeat the steps again to get my optimum model.
+
+
+## GETTING THE FIRST VARIABLE
+
+Im looking for the perfect (MonhlyIncome ~ dependent variable) combination to get the minimum RMSE
+
+    ---
+    # FORWARD SELECTION # 1
+    set.seed(21)
+    vars <- names(Talent_Train)
+    vars <- vars[vars != "MonthlyIncome"] #iterating thru variables that are not "MonthlyIncome"
+    vars <- vars[vars != "Attrition"] #iterating thru variables that are not "Attrition"
+    num_vars <- length(vars)
+    var_rmse <- data.frame("vars" = vars)
+    num_folds <- 10
+    for (j in 1:num_vars) {
+      var <- vars[j]
+      #print(var)
+      folds <- createFolds(Talent_Train$MonthlyIncome, k = num_folds)
+      rmse_scores <- numeric(num_folds)
+      for (i in 1:num_folds) {
+        #using the train data
+        train_indices <- unlist(folds[-i])
+        test_indices <- unlist(folds[i])
+        train <- Talent_Train[train_indices, ]
+        test <- Talent_Train[test_indices, ]
+        form <- as.formula(paste("MonthlyIncome ~ ",var,sep="")) 
+        model <-lm(form, data = train) #fit a linear regression model
+        predictions <- predict(model, newdata = test) #Make Predictiions
+        residuals <- predictions - test$MonthlyIncome # Calculate residuals
+        rmse <- sqrt(mean(residuals^2)) # Compute RMSE
+        rmse_scores[i] <- rmse
+      }
+      var_rmse$rmse[var_rmse$var == var] <- mean(rmse_scores)
+    }
+    
+    min_rmse = min(var_rmse$rmse) #finding the max_rmse
+    min_rmse_variable <- var_rmse$vars[which.min(var_rmse$rmse)]
+    
+    #printing out rresult
+    cat("optimum Variable is ", min_rmse_variable, " with a minimum rmse of ", min_rmse)
+    ---
+    
+> optimum Variable is  JobLevel  with a minimum rmse of  1409.276
+
+
+## GETTING THE SECOND VARIABLE
+
+Next ill look for the optimumm variable to add to our regression model (Monthly ~ JobLevel) in order to provide the minimum rmse
+
+    ---
+    # FORWARD SELECTION # 2
+    set.seed(21)
+    vars <- names(Talent_Train)
+    vars <- vars[vars != "MonthlyIncome"] #iterating thru variables that are not "MonthlyIncome"
+    vars <- vars[vars != "Attrition"] #iterating thru variables that are not "Attrition"
+    vars <- vars[vars != "JobLevel"] #iterating thru variables that are not "JobeLevel"
+    num_vars <- length(vars)
+    var_rmse <- data.frame("vars" = vars)
+    num_folds <- 10
+    for (j in 1:num_vars) {
+      var <- vars[j]
+      #print(var)
+      folds <- createFolds(Talent_Train$MonthlyIncome, k = num_folds)
+      rmse_scores <- numeric(num_folds)
+      for (i in 1:num_folds) {
+        #using the train data
+        train_indices <- unlist(folds[-i])
+        test_indices <- unlist(folds[i])
+        train <- Talent_Train[train_indices, ]
+        test <- Talent_Train[test_indices, ]
+        form <- as.formula(paste("MonthlyIncome ~ JobLevel +  ",var,sep="")) 
+        model <-lm(form, data = train) #fit a linear regression model
+        predictions <- predict(model, newdata = test) #Make Predictiions
+        residuals <- predictions - test$MonthlyIncome # Calculate residuals
+        rmse <- sqrt(mean(residuals^2)) # Compute RMSE
+        rmse_scores[i] <- rmse
+      }
+      var_rmse$rmse[var_rmse$var == var] <- mean(rmse_scores)
+    }
+    
+    min_rmse = min(var_rmse$rmse) #finding the max_rmse
+    min_rmse_variable <- var_rmse$vars[which.min(var_rmse$rmse)]
+    
+    cat("optimum Variable is ", min_rmse_variable, " with a minimum rmse of ", min_rmse)
+    ---
+
+> optimum Variable is  JobRole  with a minimum rmse of  1085.182
+
+
+## GETTING THE THIRD VARIABLE
+
+Next ill look for the optimumm variable to add to our regression model (Monthly ~ JobLevel + JobRole) in order to provide the minimum rmse
+
+    ---
+    # FORWARD SELECTION # 3
+    set.seed(21)
+    vars <- names(Talent_Train)
+    vars <- vars[vars != "MonthlyIncome"] #iterating thru variables that are not "MonthlyIncome"
+    vars <- vars[vars != "Attrition"] #iterating thru variables that are not "Attrition"
+    vars <- vars[vars != "JobLevel"] #iterating thru variables that are not "JobeLevel"
+    vars <- vars[vars != "JobRole"] #iterating thru variables that are not "JobRole"
+    num_vars <- length(vars)
+    var_rmse <- data.frame("vars" = vars)
+    num_folds <- 10
+    for (j in 1:num_vars) {
+      var <- vars[j]
+      #print(var)
+      folds <- createFolds(Talent_Train$MonthlyIncome, k = num_folds)
+      rmse_scores <- numeric(num_folds)
+      for (i in 1:num_folds) {
+        #using the train data
+        train_indices <- unlist(folds[-i])
+        test_indices <- unlist(folds[i])
+        train <- Talent_Train[train_indices, ]
+        test <- Talent_Train[test_indices, ]
+        form <- as.formula(paste("MonthlyIncome ~ JobLevel +  JobRole + ",var,sep="")) 
+        model <-lm(form, data = train) #fit a linear regression model
+        predictions <- predict(model, newdata = test) #Make Predictiions
+        residuals <- predictions - test$MonthlyIncome # Calculate residuals
+        rmse <- sqrt(mean(residuals^2)) # Compute RMSE
+        rmse_scores[i] <- rmse
+      }
+      var_rmse$rmse[var_rmse$var == var] <- mean(rmse_scores)
+    }
+    
+    min_rmse = min(var_rmse$rmse) #finding the max_rmse
+    min_rmse_variable <- var_rmse$vars[which.min(var_rmse$rmse)]
+    
+    cat("optimum Variable is ", min_rmse_variable, " with a minimum rmse of ", min_rmse)
+    ---
+    
+> optimum Variable is  TotalWorkingYears  with a minimum rmse of  1061.89
+
+
+## TESTING THE RMSE WITH THE TEST DATASET
+
+Next, ill test our optimum model, wit out dataset, splitting the dataset as test and train with a 70 - 30 split respectively.
+
+    ---
+    #splitting 70% - 30%
+    trainIndices = sample(seq(1:length(Talent_Train$Age)),round(.7*length(Talent_Train$MonthlyIncome))) #split is 70% and 30%
+    train = Talent_Train[trainIndices,] #train datset
+    test = Talent_Train[-trainIndices,] #test dataset
+    
+    # Fit the linear regression model
+    model <- lm(MonthlyIncome ~ JobLevel + JobRole + TotalWorkingYears, data = train)
+    
+    # Make predictions
+    predictions <- predict(model, newdata = test)
+    
+    # Calculate residuals
+    residuals <- predictions - test$MonthlyIncome
+    
+    # Compute RMSE
+    rmse <- sqrt(mean(residuals^2))
+    
+    # Print RMSE
+    print(rmse)
+    ---
+
+> [1] 1091.637
+
+the RMSE is 1091.37, which is far lower than our expected RMSE of 3000. Hence proving this is an optimum dataset.
+
+
+
+
+# ATTRITION RATE
+Next, i will try finding the best variables for our predictive classification model with Attrition as ou response variable
+
+
+## VISUALIZING THE CATEGORICAl VARIABLEs INTERACTIONS WITH THE RESPONSE VARIABLE (ATTRITION) 
+Looking at the Exploratory data analysis to visualize the relation ship between the attrition rate and other dependent variables
+
+    ---
+    # Since the variables are a lot, and i plan on saving time, I plan using a for loop to iterate through the variables and plot their bar plots to visualize their EDA
+    # Iterate through the dataset and execute the plot command
+    for (Variable in names(Talent_Train)){
+      # Check if the column is numeric
+      if  (!(Variable == "Attrition")) { #(!is.numeric(Talent_Train[[Variable]]) &&
+        
+        # Construct the bunch of commands with the current variable
+        
+      command <- paste0(
+        "summary <- Talent_Train %>% \n",
+        "group_by(", Variable, ", Attrition) %>% \n",
+        "summarize(count=n(), .groups = 'drop') \n",
+        "summary$perc <- 0 \n",
+        "summary$perc[summary$Attrition == 'No'] <- summary$count[summary$Attrition == 'No'] / nrow(Talent_Train[Talent_Train$Attrition == 'No',]) * 100 \n",
+        "summary$perc[summary$Attrition == 'Yes'] <- summary$count[summary$Attrition == 'Yes'] / nrow(Talent_Train[Talent_Train$Attrition == 'Yes',]) * 100 \n",
+        "summary %>% ggplot(aes(x=", Variable, ",y=perc,fill=Attrition)) + geom_bar(stat='identity') + facet_wrap(~Attrition) + \n",
+        "ylab('Percentage') + xlab('", Variable, "') + ggtitle('", Variable, " Distribution Based on Attrition Value') + theme_minimal() \n"
+      )
+        
+        # Execute the command
+        plot <- eval(parse(text = command))
+        
+        print(plot)
+      }
+    }
+    ---
+    
+    
+    
+- There seems to be a high turnover rate among employees with zero stock options level.
+- There is a higher level of Employee turnover Rate among the employees in Job Level 
+- There is a similar distribution overall between the monthly salary and employees that didn’t leave in terms of JobLevel.
+- There are similarities among the yes and no distributions.
+- There seems to be high turnover rate among employees with 10 years of in the company.
+- There seems to be a low turn over rate among employees with 1-3 years in the company.
+- There are similar distribution among the monthly income and the no attrition rates.
+
+
+
+
