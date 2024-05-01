@@ -232,41 +232,8 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
       }
     }
     ---
-    
-<div style="overflow-x: scroll; white-space: nowrap;">
-    ![Image 1](assets/img/DS_6306_Project_2/pic_1.png)
-    ![Image 2](assets/img/DS_6306_Project_2/pic_2.png)
-    ![Image 3](assets/img/DS_6306_Project_2/pic_3.png)
-    ![Image 4](assets/img/DS_6306_Project_2/pic_4.png)
-    ![Image 5](assets/img/DS_6306_Project_2/pic_5.png)
-    ![Image 6](assets/img/DS_6306_Project_2/pic_6.png)
-    ![Image 7](assets/img/DS_6306_Project_2/pic_7.png)
-    ![Image 8](assets/img/DS_6306_Project_2/pic_8.png)
-    ![Image 9](assets/img/DS_6306_Project_2/pic_9.png)
-    ![Image 10](assets/img/DS_6306_Project_2/pic_10.png)
-    ![Image 11](assets/img/DS_6306_Project_2/pic_11.png)
-    ![Image 12](assets/img/DS_6306_Project_2/pic_12.png)
-    ![Image 13](assets/img/DS_6306_Project_2/pic_13.png)
-    ![Image 14](assets/img/DS_6306_Project_2/pic_14.png)
-    ![Image 15](assets/img/DS_6306_Project_2/pic_15.png)
-    ![Image 16](assets/img/DS_6306_Project_2/pic_16.png)
-    ![Image 17](assets/img/DS_6306_Project_2/pic_17.png)
-    ![Image 18](assets/img/DS_6306_Project_2/pic_18.png)
-    ![Image 19](assets/img/DS_6306_Project_2/pic_19.png)
-    ![Image 20](assets/img/DS_6306_Project_2/pic_20.png)
-    ![Image 21](assets/img/DS_6306_Project_2/pic_21.png)
-    ![Image 22](assets/img/DS_6306_Project_2/pic_22.png)
-    ![Image 23](assets/img/DS_6306_Project_2/pic_23.png)
-    ![Image 24](assets/img/DS_6306_Project_2/pic_24.png)
-    ![Image 25](assets/img/DS_6306_Project_2/pic_25.png)
-    ![Image 26](assets/img/DS_6306_Project_2/pic_26.png)
-    ![Image 27](assets/img/DS_6306_Project_2/pic_27.png)
-    ![Image 28](assets/img/DS_6306_Project_2/pic_28.png)
-    <!-- Add more images as needed -->
-</div>
 
-
-Edit # 7
+Edit # 8
 <div style="overflow-x: scroll; white-space: nowrap;">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_1.png" title="example image" class="img-fluid rounded z-depth-1" %}
@@ -358,6 +325,8 @@ Edit # 7
     List of summary statistics for the numerical variables.
 </div>
     
+From the box plots, 4 variables have really bad spread of data. They are : EmployeeCount, Over_18_Binary, PerformanceRating, and StandardHours
+
 
         
 
