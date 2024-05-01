@@ -210,7 +210,7 @@ From our summary Statistics, there are 28 numerical variables and 8 categorical 
 
 Since the variables are a lot, and i plan on saving time, I plan using a for loop to iterate through the variables and plot their box plots to visualize their summary statistics
 
-    ---js
+    ```js
         for (Variable in names(Talent_Train)){
       # Check if the column is numeric
       if (is.numeric(Talent_Train[[Variable]])) {
@@ -231,7 +231,7 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
         print(plot)
       }
     }
-    ---
+    ```
 
 <div style="overflow-x: auto; white-space: nowrap;">
     <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
@@ -322,12 +322,46 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
 </div>
 
 <div class="caption">
-    List of summary statistics for the numerical variables.
+    List of summary statistics for the numerical variables (Please scroll through to look at the plots.)
 </div>
     
 From the box plots, 4 variables have really bad spread of data. They are : EmployeeCount, Over_18_Binary, PerformanceRating, and StandardHours
 
 
+## VISUALIZING THE VARIABLEs INTERACTIONS WITH THE RESPONSE VARIABLE (MONTHLY INCOME)
+
+Since the variables are a lot, and i plan on saving time, I plan using a for loop to iterate through the variables and plot their bar plots to visualize their EDA
+
+    ```js
+    
+        # Iterate through the dataset and execute the plot command
+    for (Variable in names(Talent_Train)){
+      # Check if the column is numeric
+      if (!(Variable == "MonthlyIncome")) {
+        
+        # Construct the bunch of commands with the current variable
+        
+      command <- paste0(
+        "Talent_Train %>% ggplot(aes(x=", Variable, ",y= MonthlyIncome, fill = ", Variable, ")) + geom_bar(stat='identity')  + \n",
+        "ylab('Monthly Income') + xlab('", Variable, "') + ggtitle('", Variable, " Distribution Based on Monthly Income') + theme_minimal() \n"
+      )
+        
+        # Execute the command
+        plot <- eval(parse(text = command))
+        
+        print(plot)
+      }
+    }
+
+    ```
+    
+- Employees in Job Level 2 seems to be paid the best
+- Sales Executive seems to be the highest paid in the company.
+- The employees with around 10 years seem to be paid the highest.
+- Employees with Job involvement rate of 3 are the highest paid in the company.
+- The employees with Stock option level 1 seem to have the highest monthly salary.
+- Human Resources Employees seem to be the lowest paid
+  
         
 
 
