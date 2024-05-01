@@ -1,8 +1,8 @@
 ---
 layout: page
-title: projects
-permalink: /projects/
-description: A growing collection of the projects done throughout my Data Science Journey.
+title: videos
+permalink: /videos/
+description: A growing collection of the Youtube videos done throughout my Data Science Journey.
 nav: true
 nav_order: 3
 display_categories: [School, fun]

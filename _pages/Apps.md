@@ -1,8 +1,8 @@
 ---
 layout: page
-title: projects
-permalink: /projects/
-description: A growing collection of the projects done throughout my Data Science Journey.
+title: Apps
+permalink: /Apps/
+description: A growing collection of the Apps built throughout my Data Science Journey.
 nav: true
 nav_order: 3
 display_categories: [School, fun]
