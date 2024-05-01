@@ -34,7 +34,7 @@ My aim is to provide valuable insight on what factors affects attrition rate and
 
 ## LOADING LIBRARIES
 
-    ---js
+    ---
     library(ggplot2) #For data visualization
     library(dplyr)  # For data manipulation
     library(tidyverse)
@@ -49,7 +49,7 @@ My aim is to provide valuable insight on what factors affects attrition rate and
     
 ##  GETTING THE CSV FILE FROM AWS USING AWS.S3 PACKAGES
 
-    ---js
+    ---
     Sys.setenv("AWS_ACCESS_KEY_ID" = "MY_ACCESS_ID",
                "AWS_SECRET_ACCESS_KEY" = MY_SECRET_ACCESS_KEY",
                "AWS_DEFAULT_REGION" = "MY_DEFAULT_REGION")
@@ -99,7 +99,7 @@ From the Train talent data, there are 870 random employees (rows), all ordered b
 
 #### LOOKING AT THE DATASET 
 
-    ---js
+    ---
     set.seed(1234)
 
     # Set levels for Talent_Train
@@ -123,7 +123,7 @@ The rate of Yes Attrition to no Attrition is 140: 730. Which presents the issue 
 ## ADDRESSING MISSING VALUES
 It is important to look at missing values earlier on, as it might be affect our models
 
-    ---js
+    ---
     NaSum <- sum(is.na(Talent_Train)) #check for missing values in the Talent Dataset
     
     # Print the total count of missing values
@@ -142,7 +142,7 @@ From the results above, there appears to be no missing values in the Dataset (th
 
 ## Looking at the Summary Statistics 
 
-    ---js
+    ---
         
     # Using a for loop to get the summary statistics
     
@@ -210,7 +210,7 @@ From our summary Statistics, there are 28 numerical variables and 8 categorical 
 
 Since the variables are a lot, and i plan on saving time, I plan using a for loop to iterate through the variables and plot their box plots to visualize their summary statistics
 
-    ```js
+    ---
         for (Variable in names(Talent_Train)){
       # Check if the column is numeric
       if (is.numeric(Talent_Train[[Variable]])) {
@@ -231,7 +231,7 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
         print(plot)
       }
     }
-    ```
+    ---
 
 <div style="overflow-x: auto; white-space: nowrap; backgroun-color: #333; padding: 5px;">
     <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
@@ -327,11 +327,11 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
 From the box plots, 4 variables have really bad spread of data. They are : EmployeeCount, Over_18_Binary, PerformanceRating, and StandardHours
 
 
-## VISUALIZING THE VARIABLEs INTERACTIONS WITH THE RESPONSE VARIABLE (MONTHLY INCOME)
+## VISUALIZING THE VARIABLES INTERACTIONS WITH THE RESPONSE VARIABLE (MONTHLY INCOME)
 
 Since the variables are a lot, and i plan on saving time, I plan using a for loop to iterate through the variables and plot their bar plots to visualize their EDA
 
-    ```js
+    ---
     
         # Iterate through the dataset and execute the plot command
     for (Variable in names(Talent_Train)){
@@ -352,7 +352,116 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
       }
     }
 
-    ```
+    ---
+    
+ <div style="overflow-x: auto; white-space: nowrap; backgroun-color: #333; padding: 5px;">
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_1.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_2.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_3.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_4.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_5.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_6.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_7.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_8.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_9.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_10.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_11.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_12.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_13.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_14.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_15.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_16.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_17.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_18.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_19.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_20.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_21.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_22.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_23.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_24.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_25.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_26.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_27.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_28.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_29.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_30.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_31.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_32.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_33.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_34.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    List of plots of the response variable vs. the various dependent variables (Please scroll through to look at the plots.)
+</div>
     
 - Employees in Job Level 2 seems to be paid the best
 - Sales Executive seems to be the highest paid in the company.
@@ -361,7 +470,7 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
 - The employees with Stock option level 1 seem to have the highest monthly salary.
 - Human Resources Employees seem to be the lowest paid
   
-        
+
 
 
     
