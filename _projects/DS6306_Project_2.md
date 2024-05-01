@@ -233,19 +233,91 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
     }
     ---
 
-Edit # 9
 <div style="overflow-x: auto; white-space: nowrap;">
     <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_1.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
-        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_2.png" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_2.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
-        <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
-        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_3/pic_3.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_3.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_4.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_5.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_6.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_7.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_8.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_9.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+     </div>
         <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
-        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_4.png" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_10.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+   <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_11.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+     <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_12.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+     <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_13.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_14.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+     <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_15.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_16.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_17.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_18.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_19.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_20.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_21.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_22.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_23.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_24.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_25.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_26.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_27.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_28.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
