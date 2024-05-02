@@ -244,3 +244,116 @@ This analysis hopes to build the best predictive model needed to predict future 
     run;
     ~~~ 
 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic9.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+        <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic10.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+        <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic11.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    Stepwise vs. Forward vs. Backward plots
+</div>
+
+**Decision:** Given that the adjusted R-squared for the stepwise model selection is higher (0.5712). We will go ahead with that instead.
+
+
+#### 3.   Custom Multiple Linear Regression (SalePrice ~ GrLivArea + OverallQual)
+
+    ~~~ SAS
+    *Custom Multiple Linear Regression (SalePrice ~ GrLivArea + OverallQual);
+    proc corr; run;
+    symbol c=blue v= dot;
+    proc sgscatter data = trainData;
+    matrix SalePrice GrLivArea OverallQual;
+    
+    proc reg data = trainData;
+    model SalePrice = GrLivArea OverallQual;
+    run;
+    
+    data NewtrainData3;
+    set trainData;
+    if _n_ = 1299 then delete;
+    if _n_ = 524 then delete;
+    run;
+    
+    proc print data = NewtrainData3;
+    run;
+    
+    proc reg data = NewtrainData3;
+    model SalePrice = GrLivArea OverallQual;
+    run;
+    
+    *running the forward selection;
+    proc glmselect data = NewtrainData3 plots = all;
+    partition fraction(test= 0.2);
+    model SalePrice = GrLivArea OverallQual /selection = Forward(select=CV choose=CV stop=CV) cvmethod=random(5) stats = adjrsq CVDETAILS;
+    run;
+    
+    *running the Backward selection;
+    proc glmselect data = NewtrainData3 plots = all;
+    partition fraction(test= 0.2);
+    model SalePrice = GrLivArea OverallQual /selection = Backward(stop=CV) cvmethod=random(5) stats = adjrsq CVDETAILS;
+    run;
+    
+    *running the Stepwise selection;
+    proc glmselect data = NewtrainData3 plots = all;
+    partition fraction(test= 0.2);
+    model SalePrice = GrLivArea OverallQual /selection = Stepwise(stop=CV) cvmethod=random(5) stats = adjrsq CVDETAILS;
+    run;
+    ~~~
+    
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic12.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+        <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic13.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+        <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic14.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    Stepwise vs. Forward vs. Backward plots
+</div>
+
+**Decision:** Given that the adjusted R-squared for the backward model selection is higher (0.7480). We will go ahead with that instead.
+
+
+## Checking Assumptions
+
+
+#### 1.  Simple Linear Regression
+
+**Residual Plots**
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic15.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+        <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic16.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic17.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+        <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic18.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    Initial vs. Final Residual plots
+</div>
+
+Judging from the scatterplot of residuals, there is no evidence against the normality of the sales price conditional on the General living area. There is also no evidence against the linear trend between the sales price versus the General Living Area because the data points converge around the line. We were able to remove the 2 extreme points that were affecting the model using the cook’s D plot. There are 2 more outliers in the residual scatterplot towards the upper right, they were left behind because they might be influential to the model and they are closer to the cluster than the previous 2 datapoints
