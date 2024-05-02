@@ -126,12 +126,12 @@ The rate of Yes Attrition to no Attrition is 140: 730. Which presents the issue 
 ## ADDRESSING MISSING VALUES
 It is important to look at missing values earlier on, as it might be affect our models
 
-    ~~~ R
+    ```R
     NaSum <- sum(is.na(Talent_Train)) #check for missing values in the Talent Dataset
     
     # Print the total count of missing values
     print(paste("Total missing values:", NaSum))
-    ~~~ 
+    ```
     
 > [1] "Total missing values: 0"
 
