@@ -233,7 +233,7 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
     }
     ---
 
-<div style="overflow-x: auto; white-space: nowrap; backgroun-color: #333; padding: 5px;">
+<div style="overflow-x: auto; white-space: nowrap; padding: 5px;">
     <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/pic_1.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
@@ -354,7 +354,7 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
 
     ---
     
- <div style="overflow-x: auto; white-space: nowrap; backgroun-color: #333; padding: 5px;">
+ <div style="overflow-x: auto; white-space: nowrap; padding: 5px;">
     <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_B/pic_1.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
@@ -517,9 +517,9 @@ Looking at how each variable in the model, significantly impacts our response va
       theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))  # Rotate x-axis labels for better readability
     ---
 
-<div style="overflow-x: auto; white-space: nowrap; background-color: #333; padding: 5px;">
+<div style="overflow-x: auto; white-space: nowrap; padding: 5px;">
     <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
-        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/GROUP_C/Pic_1.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/GROUP_C/Pic_1.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/GROUP_C/Pic_2.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
@@ -739,7 +739,7 @@ Looking at the Exploratory data analysis to visualize the relation ship between 
     }
     ---
     
- <div style="overflow-x: auto; white-space: nowrap; backgroun-color: #333; padding: 5px;">
+ <div style="overflow-x: auto; white-space: nowrap; padding: 5px;">
     <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_D/Pic1.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
@@ -907,6 +907,409 @@ Looking at how each variable in the model, significantly impacts our response va
       theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))  # Rotate x-axis labels for better readability
     ---
 
+<div style="overflow-x: auto; white-space: nowrap; padding: 5px;">
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_E/pic1.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/GROUP_E/pic2.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
 From the plot above, we can see that the top 5 highly significant values with respect to the response variable Attrition in terms of its relative most significant to least significant variables are OverTime, JobInvolvement, JobSatisfaction, NumCompaniesWorked, YearsSinceLastPromotion
 
 
+## USING FORWARD SELECTION TO GET THE VARIABLE WITH THE BEST AUC METRIC FOR THE PREDICTION MODEL ON THE ATTRITION VARIABLE I pLAN TO USE ONLY NUMERIC VARIABLES FOR KNN
+
+I plan on using the same strategy as for our regression model. This time i shall look at the Area under the curve (AUROC), which represents of the trade-off between the true positive rate (sensitivity) and the false positive rate (1 - specificity) as the classification threshold is varied. Ill be looking for the variables that provides the maximum auroc using a general logistiic model
+
+
+## GETTING THE 1ST VARIABLE: 
+
+Im looking for the perfect (Attrition ~ dependent variable) combination to get the maximum auroc score 
+
+    ---
+    Talent_Clean <- Talent_Train %>% select(Age, DailyRate, DistanceFromHome, Education, EmployeeCount, EmployeeNumber, EnvironmentSatisfaction, HourlyRate, JobInvolvement, JobLevel, JobSatisfaction, MonthlyIncome, MonthlyRate, NumCompaniesWorked, PercentSalaryHike, PerformanceRating, RelationshipSatisfaction, StandardHours, StockOptionLevel, TotalWorkingYears, TrainingTimesLastYear, WorkLifeBalance, YearsAtCompany, YearsInCurrentRole, YearsSinceLastPromotion, YearsWithCurrManager, Over18_binary, Attrition) #selecting only numeric variables
+
+    # Forward Selection # 1
+    set.seed(21)
+    vars <- names(Talent_Clean)
+    vars <- vars[vars!="Attrition"] #iterating thru variables that are not "Attrition"
+    vars <- vars[vars != "MonthlyIncome"] #iterating thru variables that are not "MonthlyIncome"
+    num_vars <- length(vars)
+    var_aucs <- data.frame("vars" = vars)
+    num_folds <- 10
+    for (j in 1:num_vars) {
+      var <- vars[j]
+      #print(var)
+      folds <- createFolds(Talent_Clean$Attrition, k = num_folds)
+      auc_scores <- numeric(num_folds)
+      for (i in 1:num_folds) {
+        train_indices <- unlist(folds[-i])
+        test_indices <- unlist(folds[i])
+        train <- Talent_Clean[train_indices, ]
+        test <- Talent_Clean[test_indices, ]
+        form <- as.formula(paste("Attrition ~ ",var,sep=""))
+        model <- glm(form, data = train, family = "binomial")
+        predictions <- predict(model, newdata = test, type = "response")
+        roc <- roc(response=test$Attrition,predictor=predictions,levels=c("No", "Yes"),direction = ">")
+        auc_scores[i] <- auc(roc) #calculating the area under the curve
+      }
+      var_aucs$auc[var_aucs$var == var] <- mean(auc_scores)
+    }
+    
+    max_auc = max(var_aucs$auc) #finding the max_auc
+    max_auc_variable <- var_aucs$vars[which.max(var_aucs$auc)]
+    
+    cat("optimum Variable is ", max_auc_variable, " with a maximum auc of ", max_auc)s
+    ---
+
+> optimum Variable is  StockOptionLevel  with a maximum auc of  0.6940313
+
+
+## GETTIONG THE THIRD VARIABLE
+
+Next ill look for the optimumm variable to add to our classification model (Attrition ~ TotalWorkingYears + StockOptionLevel) in order to provide the maximum auc score
+
+    ---
+    # Forward Selection # 2
+    set.seed(21)
+    vars <- names(Talent_Clean)
+    vars <- vars[vars!="Attrition"] #iterating thru variables that are not "Attrition"
+    vars <- vars[vars != "MonthlyIncome"] #iterating thru variables that are not "MonthlyIncome"
+    vars <- vars[vars != "TotalWorkingYears "] #iterating thru variables that are not "TotalWorkingYears "
+    num_vars <- length(vars)
+    var_aucs <- data.frame("vars" = vars)
+    num_folds <- 10
+    numks = 60
+    for (j in 1:num_vars) {
+      var <- vars[j]
+      #print(var)
+      folds <- createFolds(Talent_Clean$Attrition, k = num_folds)
+      auc_scores <- numeric(num_folds)
+      for (i in 1:num_folds) {
+        train_indices <- unlist(folds[-i])
+        test_indices <- unlist(folds[i])
+        train <- Talent_Clean[train_indices, ]
+        test <- Talent_Clean[test_indices, ]
+        form <- as.formula(paste("Attrition ~ TotalWorkingYears  + ",var,sep=""))
+        model <- glm(form, data = train, family = "binomial")
+        predictions <- predict(model, newdata = test, type = "response")
+        roc <- roc(response=test$Attrition,predictor=predictions,levels=c("No", "Yes"),direction = ">")
+        auc_scores[i] <- auc(roc) #calculating the area under the curve
+      }
+      var_aucs$auc[var_aucs$var == var] <- mean(auc_scores)
+    }
+    
+    max_auc = max(var_aucs$auc) #finding the max_auc
+    max_auc_variable <- var_aucs$vars[which.max(var_aucs$auc)]
+    
+    cat("optimum Variable is ", max_auc_variable, " with a maximum auc of ", max_auc) 
+    ---
+
+> optimum Variable is  StockOptionLevel  with a maximum auc of  0.6940313
+
+
+## GETTIONG THE THIRD VARIABLE
+
+Next ill look for the optimumm variable to add to our classification model (Attrition ~ TotalWorkingYears + StockOptionLevel) in order to provide the maximum auc score
+
+    ---
+    # Forward Selection # 3
+    set.seed(21)
+    vars <- names(Talent_Clean)
+    vars <- vars[vars!="Attrition"] #iterating thru variables that are not "Attrition"
+    vars <- vars[vars != "MonthlyIncome"] #iterating thru variables that are not "MonthlyIncome"
+    vars <- vars[vars != "TotalWorkingYears "] #iterating thru variables that are not "TotalWorkingYears "
+    vars <- vars[vars != "StockOptionLevel"] #iterating thru variables that are not "JobRole"
+    num_vars <- length(vars)
+    var_aucs <- data.frame("vars" = vars)
+    num_folds <- 10
+    numks = 60
+    for (j in 1:num_vars) {
+      var <- vars[j]
+      #print(var)
+      folds <- createFolds(Talent_Clean$Attrition, k = num_folds)
+      auc_scores <- numeric(num_folds)
+      for (i in 1:num_folds) {
+        train_indices <- unlist(folds[-i])
+        test_indices <- unlist(folds[i])
+        train <- Talent_Clean[train_indices, ]
+        test <- Talent_Clean[test_indices, ]
+        form <- as.formula(paste("Attrition ~ TotalWorkingYears  + StockOptionLevel + ",var,sep=""))
+        model <- glm(form, data = train, family = "binomial")
+        predictions <- predict(model, newdata = test, type = "response")
+        roc <- roc(response=test$Attrition,predictor=predictions,levels=c("No", "Yes"),direction = ">")
+        auc_scores[i] <- auc(roc) #calculating the area under the curve
+      }
+      var_aucs$auc[var_aucs$var == var] <- mean(auc_scores)
+    }
+    
+    max_auc = max(var_aucs$auc) #finding the max_auc
+    max_auc_variable <- var_aucs$vars[which.max(var_aucs$auc)]
+    
+    cat("optimum Variable is ", max_auc_variable, " with a maximum auc of ", max_auc)
+    ---
+    
+> optimum Variable is  JobInvolvement  with a maximum auc of  0.7157045
+
+
+## Looking at the Sensitivity & Specificity Metric FOR NB
+
+Next ill be looking at the sensitivity and specificity metric of our classification model using k- Nearest Neigbors (KNN) and Naive Bayes
+
+
+## NAIVE BAYES
+
+
+#### FINDING THE THRESHOLD
+
+ finding the best threshold for our Naive Bayes Model, in order to provide the best metric. The threshold will be gotten from the maximum F1 score, which is a metric used to evaluate the performance of a binary classification model. It combines both precision and recall into a single metric and is particularly useful when the classes are imbalanced.
+ 
+    ---
+    set.seed(123)
+    Talent_Clean <- Talent_Train %>% select(Attrition, TotalWorkingYears, StockOptionLevel, JobInvolvement) #selecting our variables
+    trainIndices <- sample(seq(1:length(Talent_Clean$Attrition)), round(0.7 * length(Talent_Clean$Attrition)))
+    train <- Talent_Clean[trainIndices, ]
+    test <- Talent_Clean[-trainIndices, ]
+    
+    train$Attrition <-factor(train$Attrition, levels=c('Yes','No')) #factoring the response variable
+    test$Attrition <-factor(test$Attrition, levels=c('Yes','No')) #factoring the response variable
+    
+    naive_bayes_model <- naiveBayes(Attrition ~ TotalWorkingYears  + StockOptionLevel + JobInvolvement, data = train)
+      
+    # Make predictions on the test set
+    predictions <- predict(naive_bayes_model, test)
+    
+    # Evaluate model performance
+    conf_matrix <- confusionMatrix(predictions, test$Attrition)
+    
+    # Print the confusion matrix
+    #print(conf_matrix)
+    
+    # Adjust label levels for better interpretation
+    test$Attrition <- relevel(test$Attrition, ref = "No")
+    
+    # Make predictions with probabilities
+    predictions_with_probs <- predict(naive_bayes_model, test, type = "raw")
+    
+    # Get probabilities of the positive class ("Yes")
+    probs <- predictions_with_probs[, "Yes"]
+    
+    # Define a new threshold
+    new_threshold <- 0.5
+    
+    # Create new labels based on the new threshold
+    new_labels <- ifelse(probs > new_threshold, "Yes", "No")
+    
+    # Convert the predicted labels to a factor with the same levels as the actual labels
+    new_labels_factor <- factor(new_labels, levels = levels(test$Attrition))
+    
+    # Evaluate model performance with the new threshold
+    new_conf_matrix <- confusionMatrix(new_labels_factor, test$Attrition)
+    
+    # Print the confusion matrix with the new threshold
+    #print(new_conf_matrix)
+    
+    # Calculate the macro F1 score with the new threshold
+    macro_f1_new_threshold <- mean(c(new_conf_matrix[4]$byClass["F1"], conf_matrix[4]$byClass["F1"]))
+    ---
+
+> Our optimum threshold is 0.5725983
+
+
+#### Looking at the Metrics
+
+    ---
+    test$Attrition = relevel(test$Attrition, ref = 'Yes')
+    
+    # Train a Naive Bayes model
+    naive_bayes_model <- naiveBayes(Attrition ~ TotalWorkingYears  + StockOptionLevel + JobInvolvement, data = train)
+    
+    # Get predicted probabilities for the positive class (assuming 'Yes' is the positive class)
+    predicted_probabilities <- predict(naive_bayes_model, test, type = "raw")[, "Yes"]
+    
+    # Define threshold
+    threshold <- macro_f1_new_threshold  # Adjust as needed
+    
+    # Adjust predictions based on threshold
+    adjusted_predictions <- ifelse(predicted_probabilities > threshold, "Yes", "No")
+    
+    # Evaluate model performance
+    adjusted_predictions <- factor(adjusted_predictions, levels = levels(test$Attrition))
+    
+    conf_matrix <- confusionMatrix(table(adjusted_predictions, test$Attrition))
+    print(conf_matrix)
+    
+    accuracy_nb <- conf_matrix$overall["Accuracy"]
+    sensitivity_nb <- conf_matrix$byClass["Sensitivity"]
+    specificity_nb <- conf_matrix$byClass["Specificity"]
+    ---
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Conf_Matrix/Naive_Bayes" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    The confusion Matrix for the Naive Bayes Model
+</div>
+  
+The sensitivity and specificity were pretty low, past our target of > 0.6 for both sensitivity and specificity. We got sensitivity to be :  0.1153846 (This is due to the low amount of Nos.) , and specificity as : 0.9856459. Accuracy is 0.5505 and Pvalue is 1.94e-09 < sig level, which is Highly significant
+
+
+##KNN MODEL
+
+
+#### Looking at the Sensitivity & Specificity Metric FOR KNN using undersampling
+
+I plan on using undersampling to get our metrics, due to the imbalance between Yes and No attrition rates. I am basically reducing the No dataset, in order to match the Yes dataset, to improve sensitivity.
+
+    ---
+    set.seed(123)
+    Talent_Clean <- Talent_Train %>% select(Attrition, TotalWorkingYears, StockOptionLevel, JobInvolvement, ID) #selecting our variables
+    trainIndices <- sample(seq(1:length(Talent_Clean$Attrition)), round(0.7 * length(Talent_Clean$Attrition)))
+    train <- Talent_Clean[trainIndices, ]
+    test <- Talent_Clean[-trainIndices, ]
+    
+    # Sample only a subset of 'No' instances to balance the classes
+    OnlyNoAttrition <- train %>% filter(Attrition == "No")
+    numYesAttrition <- sum(train$Attrition == "Yes")
+    sampled_NoAttrition <- OnlyNoAttrition[sample(seq(1, nrow(OnlyNoAttrition), 1), numYesAttrition),]
+    
+    # Combine sampled 'No' instances with 'Yes' instances to create a balanced dataset
+    balanced_data <- rbind(train %>% filter(Attrition == "Yes"), sampled_NoAttrition)
+    
+    classifications = knn(balanced_data[,2:4],train[,2:4], balanced_data[,1], prob = TRUE, k = 5) # using the F (original dataset) as the test set
+    
+    table(classifications,train[,1])
+    CM = confusionMatrix(table(classifications,train[,1]), mode = "everything")
+    
+    #Get Macro F1
+    train$Attrition = relevel(train$Attrition, ref = 'Yes')
+    classifications = knn(train[,2:4],train[2:4],train[,1], prob = TRUE, k = 5)
+    CM_Yes = confusionMatrix(table(classifications,train[,1]), mode = "everything") # Note F1
+    
+    train$Attrition = relevel(train$Attrition, ref = 'No')
+    classifications = knn(train[,2:4],train[2:4],train[,1], prob = TRUE, k = 5)
+    CM_No = confusionMatrix(table(classifications,train[,1]), mode = "everything") # Note F1
+    
+    Macro_F1_Under = mean(c(CM_Yes[4]$byClass["F1"],CM_No[4]$byClass["F1"])) 
+    Macro_F1_Under
+    ---
+
+> The threshold is 0.5892183
+
+
+#### TESTING THE METRIC
+
+Testing for sensitivity and specificity
+
+    ---
+    test$Attrition = relevel(test$Attrition, ref = 'Yes')
+    
+    knn_model <- knn(balanced_data[,2:4], test[, c(2,3,4)], balanced_data[,1], prob = TRUE,  k = 5)
+    
+    CM = confusionMatrix(table(knn_model,test[,1]), mode = "everything")
+    CM
+    
+    # Evaluate model performance
+    
+    accuracy_knn <- CM$overall["Accuracy"]
+    sensitivity_knn <- CM$byClass["Sensitivity"]
+    specificity_knn <- CM$byClass["Specificity"]
+    
+    test$predictions <- knn_model
+    
+    # Generation our regression for the test dataset
+    new_data <- test %>% select(predictions, ID)
+    
+    new_data <- new_data[order(new_data$ID), ]
+    ---
+   
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Conf_Matrix/KNN" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    The confusion Matrix for the KNN Model
+</div> 
+
+
+## MORE EDAS
+
+
+#### METRICS COMPARISON
+
+comparing accuracy, sensitivity and specificity metric for both KNN and naive bayes
+
+    ---
+    results_nb <- data.frame(Accuracy = accuracy_nb, Sensitivity = sensitivity_nb, Specificity =  specificity_nb, total = sensitivity_nb + specificity_nb)
+    avg_nb = colMeans(results_nb[, c("Accuracy", "Sensitivity", "Specificity", "total")])
+    avg_nb
+    
+    results_knn <- data.frame(Accuracy = accuracy_knn, Sensitivity = sensitivity_knn, Specificity = specificity_knn, total = sensitivity_knn + specificity_knn)
+    avg_knn = colMeans(results_knn[, c("Accuracy", "Sensitivity", "Specificity", "total")])
+    avg_knn
+    
+    
+    #Getting the barchart plots for average analysis
+    combined_results <- cbind(data.frame(avg_nb), data.frame(avg_knn))
+    
+    
+    barplot(t(combined_results[1, ]), beside = TRUE, col = rainbow(2),
+            main = "Accuracy Comparison of both knn and nb models",
+            ylab = "Accuracy (%)", legend.text = names(combined_results[1, ]))
+    
+    barplot(t(combined_results[2, ]), beside = TRUE, col = rainbow(2),
+            main = "Sensitivity Comparison of both knn and nb models",
+            ylab = "Sensitivity (%)", legend.text = names(combined_results[2, ]))
+    
+    barplot(t(combined_results[3, ]), beside = TRUE, col = rainbow(2),
+            main = "Specificity Comparison of both knn and nb models",
+            ylab = "Specificity (%)", legend.text = names(combined_results[3, ]))
+    
+    barplot(t(combined_results[4, ]), beside = TRUE, col = rainbow(2),
+            main = "Specificity Comparison of both knn and nb models",
+            ylab = "Specificity + Sensitivity (%)", legend.text = names(combined_results[4, ]))
+    ---
+    
+<div style="overflow-x: auto; white-space: nowrap; padding: 5px;">
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_F/pic1.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/GROUP_F/pic2.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/GROUP_F/pic3.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/GROUP_F/pic4.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+   Plots comparing the accuracy, sensitivity, specificity, and specificity + sensitivity metrics for noth kNN and NaiveBayes model. (Please scroll through to look at the plots)
+</div> 
+
+- Knn has a higher sensitivity and specificity +  sensitivity.
+- Naïve Bayes has higher specificity and accuracy.
+
+
+# CONCLUSION
+
+## TIPS FOR FRITO LAY
+
+- Try providing more incentives to employees to improve retention rate
+- Let the stock options match the amount of years the employees worked
+
+
+## FUTURE WORK
+
+- Try to improve sensitivity values for the classification model.
+- Explore other variables that might affect the classification and prediction model.
+- Try using other classification techniques to predict my model likeSupport Vector Machine (SVM) or RandomForest
