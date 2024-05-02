@@ -203,6 +203,9 @@ From the results above, there appears to be no missing values in the Dataset (th
     }
     ---
     
+> There are   28  numerical variables 
+> There are   8  categorical variables
+    
 From our summary Statistics, there are 28 numerical variables and 8 categorical variables. All adding to 36 variables. Some variables that swtood out were the EmployeeCount, which have a constant 1 values, and the Job Involvement, which values ranges between 1 and 4, hence providing a really low variance,.    
     
     
@@ -912,8 +915,12 @@ Looking at how each variable in the model, significantly impacts our response va
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_E/pic1.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
-        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/GROUP_E/pic2.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_E/pic2.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
+</div>
+
+<div class="caption">
+    2 different plots of the p-value distribution (Please scroll through to look at the plots.)
 </div>
 
 From the plot above, we can see that the top 5 highly significant values with respect to the response variable Attrition in terms of its relative most significant to least significant variables are OverTime, JobInvolvement, JobSatisfaction, NumCompaniesWorked, YearsSinceLastPromotion
@@ -1148,7 +1155,7 @@ Next ill be looking at the sensitivity and specificity metric of our classificat
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Conf_Matrix/Naive_Bayes" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Conf_Matrix/Naive_Bayes.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -1230,7 +1237,7 @@ Testing for sensitivity and specificity
    
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Conf_Matrix/KNN" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Conf_Matrix/KNN.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
