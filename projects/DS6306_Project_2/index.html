@@ -9,7 +9,7 @@ library(pROC) # for the ROC curve
 library(class) #calling the knn function
 library(e1071)  # for naiveBayes function
 ~~~
-</code></pre></div></div> <h2 id="getting-the-csv-file-from-aws-using-awss3-packages">GETTING THE CSV FILE FROM AWS USING AWS.S3 PACKAGES</h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~~~ ruby
+</code></pre></div></div> <h2 id="getting-the-csv-file-from-aws-using-awss3-packages">GETTING THE CSV FILE FROM AWS USING AWS.S3 PACKAGES</h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~~~ R
 Sys.setenv("AWS_ACCESS_KEY_ID" = "MY_ACCESS_ID",
            "AWS_SECRET_ACCESS_KEY" = MY_SECRET_ACCESS_KEY",
            "AWS_DEFAULT_REGION" = "MY_DEFAULT_REGION")
@@ -53,7 +53,7 @@ Example2 = s3read_using(FUN = read.csv,
 #Our response variable will be based on the attrition variable
 
 ~~~
-</code></pre></div></div> <p>From the Train talent data, there are 870 random employees (rows), all ordered by IDD, and 36 variables (columns).</p> <h2 id="looking-at-the-dataset">LOOKING AT THE DATASET</h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~~~ruby
+</code></pre></div></div> <p>From the Train talent data, there are 870 random employees (rows), all ordered by IDD, and 36 variables (columns).</p> <h2 id="looking-at-the-dataset">LOOKING AT THE DATASET</h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~~~ R
 set.seed(1234)
 
 # Set levels for Talent_Train
