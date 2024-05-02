@@ -10,6 +10,8 @@ category: work
 
 Please try out my interactive Rshinyapp to experience my model’s prediction rate : [RShiny](https://oluwadamilolaowolabi.shinyapps.io/DS_6372_Project_2/)
 
+Here is the link to other files related to the project in my GitHub Repository: [RShiny](https://github.com/DamilolaOwolabi/DS-6371-Project)
+
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
