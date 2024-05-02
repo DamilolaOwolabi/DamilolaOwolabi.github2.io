@@ -28,4 +28,9 @@ Here is the link to other files related to the project in my GitHub Repository: 
 
 # Introduction
 
+Good afternoon Mr. Whitworth and Mr. Tennenbaum. We are here today to present the findings from the questions presented to our team of Data Scientist. We will answer the nine questions provided ahead of time with our analysis and visualuations, as well as highlighting any key observations that came up during our review. With that, let us get started as we’re excited to share with you the breakdown of our findings.
+
+
+
+
 

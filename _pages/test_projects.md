@@ -4,7 +4,7 @@ title: test_projects
 permalink: /test_projects/
 description: A growing collection of test_projects done throughout my Data Science journey.
 nav: true
-nav_order: 10
+nav_order: 9
 display_categories: [work, fun]
 horizontal: false
 ---
