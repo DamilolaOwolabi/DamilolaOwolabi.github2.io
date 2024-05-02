@@ -1,0 +1,685 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Frito Lay Talent Attrition Analysis | Oluwadamilola Owolabi </title> <meta name="author" content="Oluwadamilola (Dammy) Ebenezer Owolabi"> <meta name="description" content="The project aims to predict the sale prices of homes in Ames, Iowa using existing data"> <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e"> <link rel="canonical" href="https://damilolaowolabi.github.io/projects/DS6371_Final_Project/"> <script src="/assets/js/theme.js?a5ca4084d3b81624bcfa01156dae2b8e"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>initTheme();</script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Oluwadamilola Owolabi </a> <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse text-right" id="navbarNav"> <ul class="navbar-nav ml-auto flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item "> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications </a> </li> <li class="nav-item active"> <a class="nav-link" href="/projects/">projects <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/repositories/">repositories </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">cv </a> </li> <li class="nav-item "> <a class="nav-link" href="/courses/">courses </a> </li> <li class="nav-item "> <a class="nav-link" href="/Apps/">Apps </a> </li> <li class="nav-item "> <a class="nav-link" href="/videos/">videos </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">submenus </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/publications/">publications</a> <div class="dropdown-divider"></div> <a class="dropdown-item " href="/projects/">projects</a> <div class="dropdown-divider"></div> <a class="dropdown-item " href="/blog/">blog</a> <div class="dropdown-divider"></div> <a class="dropdown-item " href="/videos/">videos</a> <div class="dropdown-divider"></div> <a class="dropdown-item " href="/Apps/">Apps</a> </div> </li> <li class="toggle-container"> <button id="light-toggle" title="Change theme"> <i class="ti ti-sun-moon" id="light-toggle-system"></i> <i class="ti ti-moon-filled" id="light-toggle-dark"></i> <i class="ti ti-sun-filled" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">Frito Lay Talent Attrition Analysis</h1> <p class="post-description">The project aims to predict the sale prices of homes in Ames, Iowa using existing data</p> </header> <article> <p>Please try out my interactive Rshinyapp to experience my model’s prediction rate : <a href="https://oluwadamilolaowolabi.shinyapps.io/DS_6372_Project_2/" rel="external nofollow noopener" target="_blank">RShiny</a></p> <p>Here is the link to other files related to the project in my GitHub Repository: <a href="https://github.com/DamilolaOwolabi/DS-6371-Project" rel="external nofollow noopener" target="_blank">RShiny</a></p> <div class="row"> <div class="col-sm mt-3 mt-md-0"> <iframe width="560" height="315" src="https://www.youtube.com/embed/hwyr3ZPVgIQ?si=OlWzfU2HNfsL_NWf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe> </div> </div> <div class="caption"> Here is the Youtube Video of my presentation. </div> <h1 id="introduction">INTRODUCTION</h1> <p>Good afternoon Mr. Steven Williams – CEO and Mrs. Christy Jacoby - CFO. I am here today to present my findings on my analysis on the factors affecting the rate of attrition among employees within a company. I am an employee of DDSAnalytivs, and i am here to present how my analysis can help you retain talented employees within Frito Lays.</p> <p>Our data set was extracted from the company’s AWS bucket. Where we interviewed 870 random employees, question related to their possibility of attrition.We got 36 answers from each employee. 34 of those factors (answers) were used for our dependent variables. hle 2 of them were used for our predictions: The monthly income for our Regression prediction, and the Attrition for our Classification prediction.</p> <p>My aim is to provide valuable insight on what factors affects attrition rate and Monthly Income</p> <h2 id="loading-libraries">LOADING LIBRARIES</h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+library(ggplot2) #For data visualization
+library(dplyr)  # For data manipulation
+library(tidyverse)
+#install.packages('aws.s3')
+library(aws.s3) #to access the aws s3 package
+library(caret) # Load the caret package
+library(pROC) # for the ROC curve
+library(class) #calling the knn function
+library(e1071)  # for naiveBayes function
+---
+</code></pre></div></div> <h2 id="getting-the-csv-file-from-aws-using-awss3-packages">GETTING THE CSV FILE FROM AWS USING AWS.S3 PACKAGES</h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+Sys.setenv("AWS_ACCESS_KEY_ID" = "MY_ACCESS_ID",
+           "AWS_SECRET_ACCESS_KEY" = MY_SECRET_ACCESS_KEY",
+           "AWS_DEFAULT_REGION" = "MY_DEFAULT_REGION")
+
+
+# Using aws.s3
+aws.s3::bucketlist()
+aws.s3::get_bucket("msdsds6306")
+
+
+# read and write from ojbect
+
+#Read in the train data 
+Talent_Train = s3read_using(FUN = read.csv,
+                    bucket = "msdsds6306",
+                    object = "CaseStudy2-data.csv")
+
+#Reading in  the Test Data for Attrition
+Talent_Test_Attrition = s3read_using(FUN = read.csv,
+                    bucket = "msdsds6306",
+                    object = "CaseStudy2CompSet No Attrition.csv")
+
+#Reading in  the Test Data for monthly income
+Talent_Test_Salary = s3read_using(FUN = read.csv,
+                    bucket = "msdsds6306",
+                    object = "CaseStudy2CompSet No Salary.csv")
+
+#Reading in  an example of prediction Regeression
+Example = s3read_using(FUN = read.csv,
+                    bucket = "msdsds6306",
+                    object = "Case2PredictionsRegressEXAMPLE.csv")
+
+#Reading in  an example of prediction classification
+Example2 = s3read_using(FUN = read.csv,
+                    bucket = "msdsds6306",
+                    object = "Case2PredictionsClassifyEXAMPLE.csv")
+
+
+#How many variables in the dataset ? 36
+
+#Our response variable will be based on the attrition variable
+
+---
+</code></pre></div></div> <p>From the Train talent data, there are 870 random employees (rows), all ordered by IDD, and 36 variables (columns).</p> <h2 id="looking-at-the-dataset">LOOKING AT THE DATASET</h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+set.seed(1234)
+
+# Set levels for Talent_Train
+Talent_Train$Attrition &lt;-factor(Talent_Train$Attrition, levels=c('Yes','No')) #factoring the response variable
+Talent_Train &lt;- Talent_Train %&gt;% mutate(Over18_binary = ifelse(Over18 == "Y", 1, 0)) # breaking the Over18 variable into 2, because it has only one level, and keeps throwing an error.
+
+Talent_Train &lt;- subset(Talent_Train, select = -c(Over18)) #removing the over18 column
+
+# Set levels for Talent_Test_Salary
+Talent_Test_Salary$Attrition &lt;-factor(Talent_Test_Salary$Attrition, levels=c('No','Yes')) #factoring the response variable
+Talent_Test_Salary &lt;- Talent_Test_Salary %&gt;% mutate(Over18_binary = ifelse(Over18 == "Y", 1, 0)) # breaking the Over18 variable into 2, because it has only one level.
+Talent_Test_Salary &lt;- subset(Talent_Test_Salary , select = -c(Over18)) #removing the over18 column
+
+yes_data &lt;- Talent_Train[Talent_Train$Attrition == 'Yes',] # 4250
+no_data &lt;- Talent_Train[Talent_Train$Attrition == 'No',] # 31918
+---
+</code></pre></div></div> <p>The rate of Yes Attrition to no Attrition is 140: 730. Which presents the issue of an unbalanced data. This might be costly to sensitivity metric. Thankfully, i come equipped with knowledge from my Data Science professor (Prof. Bivin Sadler) on how to resolve this.</p> <h2 id="addressing-missing-values">ADDRESSING MISSING VALUES</h2> <p>It is important to look at missing values earlier on, as it might be affect our models</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+NaSum &lt;- sum(is.na(Talent_Train)) #check for missing values in the Talent Dataset
+
+# Print the total count of missing values
+print(paste("Total missing values:", NaSum))
+---
+</code></pre></div></div> <blockquote> <p>[1] “Total missing values: 0”</p> </blockquote> <p>From the results above, there appears to be no missing values in the Dataset (thank God!!)</p> <h1 id="salary">SALARY</h1> <h2 id="looking-at-the-summary-statistics">Looking at the Summary Statistics</h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+    
+# Using a for loop to get the summary statistics
+
+# Initialize an empty list 
+numerical_count &lt;- 0 # There are 27
+categorical_count &lt;- 0 # There are 9
+summary_stats_numerical &lt;- list() # Storing summary statistics for the numerical variables
+summary_stats_categorical &lt;- list() # Storing summary statistics for the categorical variables
+summary_stats2_categorical &lt;- list() # Storing summary statistics for the categorical variables
+categorical_variables &lt;- list() #Storing categorical variables
+numerical_variables &lt;- list() #Storing numerical variables
+
+# Iterate over each column in the data frame
+for (Variable in names(Talent_Train)) {
+  # Calculate summary statistics for numeric variables
+  if (is.numeric(Talent_Train[[Variable]])) {
+    summary_stats_numerical[[Variable]] &lt;- summary(Talent_Train[[Variable]])
+    numerical_variables[[Variable]] &lt;- Variable
+    numerical_count &lt;- numerical_count + 1
+  } else {
+    # For non-numeric variables, calculate frequency table
+    summary_stats_categorical[[Variable]] &lt;- table(Talent_Train[[Variable]])
+    summary_stats2_categorical[[Variable]] &lt;- summary(Talent_Train[[Variable]])
+    categorical_variables[[Variable]] &lt;- Variable
+    categorical_count &lt;- categorical_count + 1
+  }
+}
+
+cat("There are  ", numerical_count, " numerical variables \n")
+cat("The numerical variables are: ")
+#Printing the numerical variables
+for (variable in names(numerical_variables)){
+  print(numerical_variables[[variable]])
+}
+cat("\n")
+
+cat("There are  ", categorical_count, " categorical variables \n")
+cat("The categorical variables are: ")
+#Printing the categorical variables
+for (variable in names(categorical_variables)){
+  print(categorical_variables[[variable]])
+}
+cat("\n")
+
+# Print summary statistics for each numerical variable
+for (col_name in names(summary_stats_numerical)) {
+  cat("Summary statistics for", col_name, ":\n")
+  print(summary_stats_numerical[[col_name]])
+  cat("\n")
+}
+
+# Print summary statistics for each categorical variable
+for (col_name in names(summary_stats_categorical)) {
+  cat("Summary statistics for", col_name, ":\n")
+  print(summary_stats_categorical[[col_name]])
+  #print(summary_stats2_categorical[[col_name]])
+  cat("\n")
+}
+---
+</code></pre></div></div> <blockquote> <p>There are 28 numerical variables There are 8 categorical variables</p> </blockquote> <p>From our summary Statistics, there are 28 numerical variables and 8 categorical variables. All adding to 36 variables. Some variables that swtood out were the EmployeeCount, which have a constant 1 values, and the Job Involvement, which values ranges between 1 and 4, hence providing a really low variance,.</p> <h2 id="visualizing-the-numerical-variables-summary-statistics">VISUALIZING THE NUMERICAL VARIABLES SUMMARY STATISTICS</h2> <p>Since the variables are a lot, and i plan on saving time, I plan using a for loop to iterate through the variables and plot their box plots to visualize their summary statistics</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+    for (Variable in names(Talent_Train)){
+  # Check if the column is numeric
+  if (is.numeric(Talent_Train[[Variable]])) {
+    # Create a box plot for numeric variables
+   plot &lt;-  ggplot(Talent_Train, aes_string(x = , y = Variable)) +
+      geom_boxplot(color = "black", fill = "lightblue") +
+      labs(title = paste("Box Plot of", Variable)) + 
+      geom_text(aes(label = paste("Median:", median(Talent_Train[[Variable]]), "\n", 
+                                  "Mean: ", mean(Talent_Train[[Variable]]), "\n", 
+                                  "SD: ", sd(Talent_Train[[Variable]]),
+                                  "1st Quarter: ", summary(Talent_Train[[Variable]])[2], "\n",
+                                  "3rd Quarter: ", summary(Talent_Train[[Variable]])[4], "\n",
+                                  "Min: ", summary(Talent_Train[[Variable]])[1], "\n",
+                                  "Max: ", summary(Talent_Train[[Variable]])[5], "\n")),
+                x = 0.4, y = max(Talent_Train[[Variable]]), hjust = 1, vjust = 1, size = 3, color = "blue") 
+   
+   # Print the plot
+    print(plot)
+  }
+}
+---
+</code></pre></div></div> <div style="overflow-x: auto; white-space: nowrap; padding: 5px;"> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_1-480.webp 480w,/assets/img/DS_6306_Project_2/pic_1-800.webp 800w,/assets/img/DS_6306_Project_2/pic_1-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_1.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_2.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_2.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_2.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_2.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_3.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_3.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_3.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_3.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_4.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_4.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_4.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_4.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_5.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_5.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_5.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_5.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_6.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_6.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_6.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_6.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_7.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_7.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_7.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_7.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_8.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_8.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_8.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_8.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_9.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_9.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_9.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_9.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_10.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_10.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_10.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_10.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_11.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_11.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_11.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_11.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_12.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_12.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_12.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_12.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_13.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_13.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_13.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_13.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_14.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_14.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_14.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_14.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_15.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_15.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_15.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_15.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_16.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_16.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_16.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_16.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_17.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_17.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_17.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_17.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_18.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_18.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_18.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_18.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_19.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_19.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_19.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_19.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_20.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_20.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_20.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_20.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_21.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_21.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_21.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_21.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_22.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_22.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_22.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_22.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_23.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_23.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_23.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_23.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_24.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_24.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_24.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_24.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_25.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_25.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_25.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_25.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_26.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_26.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_26.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_26.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_27.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_27.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_27.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_27.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/pic_28.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/pic_28.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/pic_28.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/pic_28.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <div class="caption"> List of summary statistics for the numerical variables (Please scroll through to look at the plots.) </div> <p>From the box plots, 4 variables have really bad spread of data. They are : EmployeeCount, Over_18_Binary, PerformanceRating, and StandardHours</p> <h2 id="visualizing-the-variables-interactions-with-the-response-variable-monthly-income">VISUALIZING THE VARIABLES INTERACTIONS WITH THE RESPONSE VARIABLE (MONTHLY INCOME)</h2> <p>Since the variables are a lot, and i plan on saving time, I plan using a for loop to iterate through the variables and plot their bar plots to visualize their EDA</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+
+    # Iterate through the dataset and execute the plot command
+for (Variable in names(Talent_Train)){
+  # Check if the column is numeric
+  if (!(Variable == "MonthlyIncome")) {
+    
+    # Construct the bunch of commands with the current variable
+    
+  command &lt;- paste0(
+    "Talent_Train %&gt;% ggplot(aes(x=", Variable, ",y= MonthlyIncome, fill = ", Variable, ")) + geom_bar(stat='identity')  + \n",
+    "ylab('Monthly Income') + xlab('", Variable, "') + ggtitle('", Variable, " Distribution Based on Monthly Income') + theme_minimal() \n"
+  )
+    
+    # Execute the command
+    plot &lt;- eval(parse(text = command))
+    
+    print(plot)
+  }
+}
+
+---
+</code></pre></div></div> <div style="overflow-x: auto; white-space: nowrap; padding: 5px;"> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_1.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_1.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_1.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_1.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_2.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_2.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_2.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_2.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_3.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_3.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_3.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_3.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_4.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_4.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_4.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_4.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_5.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_5.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_5.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_5.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_6.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_6.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_6.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_6.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_7.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_7.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_7.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_7.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_8.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_8.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_8.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_8.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_9.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_9.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_9.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_9.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_10.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_10.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_10.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_10.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_11.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_11.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_11.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_11.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_12.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_12.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_12.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_12.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_13.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_13.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_13.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_13.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_14.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_14.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_14.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_14.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_15.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_15.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_15.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_15.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_16.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_16.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_16.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_16.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_17.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_17.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_17.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_17.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_18.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_18.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_18.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_18.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_19.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_19.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_19.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_19.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_20.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_20.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_20.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_20.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_21.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_21.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_21.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_21.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_22.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_22.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_22.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_22.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_23.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_23.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_23.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_23.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_24.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_24.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_24.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_24.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_25.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_25.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_25.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_25.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_26.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_26.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_26.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_26.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_27.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_27.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_27.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_27.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_28.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_28.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_28.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_28.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_29.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_29.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_29.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_29.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_30.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_30.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_30.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_30.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_31.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_31.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_31.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_31.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_32.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_32.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_32.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_32.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_33.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_33.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_33.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_33.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_B/pic_34.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_B/pic_34.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_B/pic_34.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_B/pic_34.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <div class="caption"> List of plots of the response variable (Salary) vs. the various dependent variables (Please scroll through to look at the plots.) </div> <ul> <li>Employees in Job Level 2 seems to be paid the best</li> <li>Sales Executive seems to be the highest paid in the company.</li> <li>The employees with around 10 years seem to be paid the highest.</li> <li>Employees with Job involvement rate of 3 are the highest paid in the company.</li> <li>The employees with Stock option level 1 seem to have the highest monthly salary.</li> <li>Human Resources Employees seem to be the lowest paid</li> </ul> <h2 id="looking-at-the-pvalue-distributions-for-the-monthly-income">LOOKING AT THE PVALUE DISTRIBUTIONS FOR THE MONTHLY INCOME</h2> <p>Looking at how each variable in the model, significantly impacts our response variable (MonthlyIncome)</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+
+model &lt;-lm(MonthlyIncome ~ ., data = Talent_Train)
+
+# Extract variable names
+variable_names &lt;- rownames(summary(model)$coefficients)
+
+# getting the  p-values from the model3
+p_values &lt;- summary(model)$coefficients[, 4]  # Assuming p-values are in the 4th column of the summary table
+p_values &lt;- data.frame(p_values)$p_values
+
+df &lt;- data.frame(variable_names, p_values) #combining the pvalues and variable names into a dataframe
+
+df &lt;- df[!df$p_value == 0 , ] #removing varaiables with pvalue = 0
+df$p_values &lt;- log(df$p_values)  * -1
+
+# Rank p-values in the dataset from max to min
+df$rank &lt;- rank(-df$p_value)
+
+sorted_df &lt;- df[order(df$rank), ]
+
+
+barplot(df$p_values, 
+        main = "P-values of Regression Coefficients less than the significance level 0.05", 
+        xlab = "Variables", 
+        ylab = "P-value",
+        names.arg = df$variable_names,
+        las = 2,  # Rotate x-axis labels vertically for better readability
+        col = "steelblue",  # Set color of bars
+        ylim = c(exp(0.05) * -1, max(sorted_df$p_values) * 1.2)  # Set ylim from the significance level to the max p-values
+        
+)
+
+library(ggplot2)
+ggplot(sorted_df,aes(variable_names,p_values, fill = ifelse(p_values &gt; (exp(0.05) * -1), "Positive", "Negative"))) + #filtering just the highly significant p-values
+  geom_bar(stat="identity", fill = "skyblue") + 
+  #geom_text(aes(label = variable_names), vjust = -0.5) +  # Add text labels on top of bars
+  scale_fill_manual(values = c("Positive" = "skyblue", "Negative" = "salmon")) +
+  labs(x = "Variables", y = "P-values", title = "P-values of Regression Coefficients less than the significance level 0.05") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))  # Rotate x-axis labels for better readability
+---
+</code></pre></div></div> <div style="overflow-x: auto; white-space: nowrap; padding: 5px;"> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/GROUP_C/Pic_1-480.webp 480w,/assets/img/DS_6306_Project_2/GROUP_C/Pic_1-800.webp 800w,/assets/img/DS_6306_Project_2/GROUP_C/Pic_1-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/GROUP_C/Pic_1.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/GROUP_C/Pic_2.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/GROUP_C/Pic_2.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/GROUP_C/Pic_2.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/GROUP_C/Pic_2.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <div class="caption"> 2 different plots of the p-value distribution (Please scroll through to look at the plots.) </div> <p>From the plot above, we can see that the top 5 highly significant values with respect to the response variable y in terms of its relative most significant to least significant variables are JobLevel, JobRole, TotalWorkingYears, BusinessTravel, YearsSinceLastPromotion</p> <h2 id="using-forward-selection-to-get-the-best-regression-model-with-the-lowest-rmse-for-the-monthly-income">USING FORWARD SELECTION TO GET THE BEST REGRESSION MODEL WITH THE LOWEST RMSE FOR THE MONTHLY INCOME</h2> <p>My plan is to iterate through finding the logistic regression with the min rmse value when interacting our response variable with various predictors. Then ill pick the variable with the min rmse. Ill add my min rmse variable to the model, then use the next iteration to get the min rmse when add another variable with our prior variable, then interact them with our response variable. Then i repeat the steps again to get my optimum model.</p> <h2 id="getting-the-first-variable">GETTING THE FIRST VARIABLE</h2> <p>Im looking for the perfect (MonhlyIncome ~ dependent variable) combination to get the minimum RMSE</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+# FORWARD SELECTION # 1
+set.seed(21)
+vars &lt;- names(Talent_Train)
+vars &lt;- vars[vars != "MonthlyIncome"] #iterating thru variables that are not "MonthlyIncome"
+vars &lt;- vars[vars != "Attrition"] #iterating thru variables that are not "Attrition"
+num_vars &lt;- length(vars)
+var_rmse &lt;- data.frame("vars" = vars)
+num_folds &lt;- 10
+for (j in 1:num_vars) {
+  var &lt;- vars[j]
+  #print(var)
+  folds &lt;- createFolds(Talent_Train$MonthlyIncome, k = num_folds)
+  rmse_scores &lt;- numeric(num_folds)
+  for (i in 1:num_folds) {
+    #using the train data
+    train_indices &lt;- unlist(folds[-i])
+    test_indices &lt;- unlist(folds[i])
+    train &lt;- Talent_Train[train_indices, ]
+    test &lt;- Talent_Train[test_indices, ]
+    form &lt;- as.formula(paste("MonthlyIncome ~ ",var,sep="")) 
+    model &lt;-lm(form, data = train) #fit a linear regression model
+    predictions &lt;- predict(model, newdata = test) #Make Predictiions
+    residuals &lt;- predictions - test$MonthlyIncome # Calculate residuals
+    rmse &lt;- sqrt(mean(residuals^2)) # Compute RMSE
+    rmse_scores[i] &lt;- rmse
+  }
+  var_rmse$rmse[var_rmse$var == var] &lt;- mean(rmse_scores)
+}
+
+min_rmse = min(var_rmse$rmse) #finding the max_rmse
+min_rmse_variable &lt;- var_rmse$vars[which.min(var_rmse$rmse)]
+
+#printing out rresult
+cat("optimum Variable is ", min_rmse_variable, " with a minimum rmse of ", min_rmse)
+---
+</code></pre></div></div> <blockquote> <p>optimum Variable is JobLevel with a minimum rmse of 1409.276</p> </blockquote> <h2 id="getting-the-second-variable">GETTING THE SECOND VARIABLE</h2> <p>Next ill look for the optimumm variable to add to our regression model (Monthly ~ JobLevel) in order to provide the minimum rmse</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+# FORWARD SELECTION # 2
+set.seed(21)
+vars &lt;- names(Talent_Train)
+vars &lt;- vars[vars != "MonthlyIncome"] #iterating thru variables that are not "MonthlyIncome"
+vars &lt;- vars[vars != "Attrition"] #iterating thru variables that are not "Attrition"
+vars &lt;- vars[vars != "JobLevel"] #iterating thru variables that are not "JobeLevel"
+num_vars &lt;- length(vars)
+var_rmse &lt;- data.frame("vars" = vars)
+num_folds &lt;- 10
+for (j in 1:num_vars) {
+  var &lt;- vars[j]
+  #print(var)
+  folds &lt;- createFolds(Talent_Train$MonthlyIncome, k = num_folds)
+  rmse_scores &lt;- numeric(num_folds)
+  for (i in 1:num_folds) {
+    #using the train data
+    train_indices &lt;- unlist(folds[-i])
+    test_indices &lt;- unlist(folds[i])
+    train &lt;- Talent_Train[train_indices, ]
+    test &lt;- Talent_Train[test_indices, ]
+    form &lt;- as.formula(paste("MonthlyIncome ~ JobLevel +  ",var,sep="")) 
+    model &lt;-lm(form, data = train) #fit a linear regression model
+    predictions &lt;- predict(model, newdata = test) #Make Predictiions
+    residuals &lt;- predictions - test$MonthlyIncome # Calculate residuals
+    rmse &lt;- sqrt(mean(residuals^2)) # Compute RMSE
+    rmse_scores[i] &lt;- rmse
+  }
+  var_rmse$rmse[var_rmse$var == var] &lt;- mean(rmse_scores)
+}
+
+min_rmse = min(var_rmse$rmse) #finding the max_rmse
+min_rmse_variable &lt;- var_rmse$vars[which.min(var_rmse$rmse)]
+
+cat("optimum Variable is ", min_rmse_variable, " with a minimum rmse of ", min_rmse)
+---
+</code></pre></div></div> <blockquote> <p>optimum Variable is JobRole with a minimum rmse of 1085.182</p> </blockquote> <h2 id="getting-the-third-variable">GETTING THE THIRD VARIABLE</h2> <p>Next ill look for the optimumm variable to add to our regression model (Monthly ~ JobLevel + JobRole) in order to provide the minimum rmse</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+# FORWARD SELECTION # 3
+set.seed(21)
+vars &lt;- names(Talent_Train)
+vars &lt;- vars[vars != "MonthlyIncome"] #iterating thru variables that are not "MonthlyIncome"
+vars &lt;- vars[vars != "Attrition"] #iterating thru variables that are not "Attrition"
+vars &lt;- vars[vars != "JobLevel"] #iterating thru variables that are not "JobeLevel"
+vars &lt;- vars[vars != "JobRole"] #iterating thru variables that are not "JobRole"
+num_vars &lt;- length(vars)
+var_rmse &lt;- data.frame("vars" = vars)
+num_folds &lt;- 10
+for (j in 1:num_vars) {
+  var &lt;- vars[j]
+  #print(var)
+  folds &lt;- createFolds(Talent_Train$MonthlyIncome, k = num_folds)
+  rmse_scores &lt;- numeric(num_folds)
+  for (i in 1:num_folds) {
+    #using the train data
+    train_indices &lt;- unlist(folds[-i])
+    test_indices &lt;- unlist(folds[i])
+    train &lt;- Talent_Train[train_indices, ]
+    test &lt;- Talent_Train[test_indices, ]
+    form &lt;- as.formula(paste("MonthlyIncome ~ JobLevel +  JobRole + ",var,sep="")) 
+    model &lt;-lm(form, data = train) #fit a linear regression model
+    predictions &lt;- predict(model, newdata = test) #Make Predictiions
+    residuals &lt;- predictions - test$MonthlyIncome # Calculate residuals
+    rmse &lt;- sqrt(mean(residuals^2)) # Compute RMSE
+    rmse_scores[i] &lt;- rmse
+  }
+  var_rmse$rmse[var_rmse$var == var] &lt;- mean(rmse_scores)
+}
+
+min_rmse = min(var_rmse$rmse) #finding the max_rmse
+min_rmse_variable &lt;- var_rmse$vars[which.min(var_rmse$rmse)]
+
+cat("optimum Variable is ", min_rmse_variable, " with a minimum rmse of ", min_rmse)
+---
+</code></pre></div></div> <blockquote> <p>optimum Variable is TotalWorkingYears with a minimum rmse of 1061.89</p> </blockquote> <h2 id="testing-the-rmse-with-the-test-dataset">TESTING THE RMSE WITH THE TEST DATASET</h2> <p>Next, ill test our optimum model, wit out dataset, splitting the dataset as test and train with a 70 - 30 split respectively.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+#splitting 70% - 30%
+trainIndices = sample(seq(1:length(Talent_Train$Age)),round(.7*length(Talent_Train$MonthlyIncome))) #split is 70% and 30%
+train = Talent_Train[trainIndices,] #train datset
+test = Talent_Train[-trainIndices,] #test dataset
+
+# Fit the linear regression model
+model &lt;- lm(MonthlyIncome ~ JobLevel + JobRole + TotalWorkingYears, data = train)
+
+# Make predictions
+predictions &lt;- predict(model, newdata = test)
+
+# Calculate residuals
+residuals &lt;- predictions - test$MonthlyIncome
+
+# Compute RMSE
+rmse &lt;- sqrt(mean(residuals^2))
+
+# Print RMSE
+print(rmse)
+---
+</code></pre></div></div> <blockquote> <p>[1] 1091.637</p> </blockquote> <p>the RMSE is 1091.37, which is far lower than our expected RMSE of 3000. Hence proving this is an optimum dataset.</p> <h1 id="attrition-rate">ATTRITION RATE</h1> <p>Next, i will try finding the best variables for our predictive classification model with Attrition as ou response variable</p> <h2 id="visualizing-the-categorical-variables-interactions-with-the-response-variable-attrition">VISUALIZING THE CATEGORICAl VARIABLEs INTERACTIONS WITH THE RESPONSE VARIABLE (ATTRITION)</h2> <p>Looking at the Exploratory data analysis to visualize the relation ship between the attrition rate and other dependent variables</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+# Since the variables are a lot, and i plan on saving time, I plan using a for loop to iterate through the variables and plot their bar plots to visualize their EDA
+# Iterate through the dataset and execute the plot command
+for (Variable in names(Talent_Train)){
+  # Check if the column is numeric
+  if  (!(Variable == "Attrition")) { #(!is.numeric(Talent_Train[[Variable]]) &amp;&amp;
+    
+    # Construct the bunch of commands with the current variable
+    
+  command &lt;- paste0(
+    "summary &lt;- Talent_Train %&gt;% \n",
+    "group_by(", Variable, ", Attrition) %&gt;% \n",
+    "summarize(count=n(), .groups = 'drop') \n",
+    "summary$perc &lt;- 0 \n",
+    "summary$perc[summary$Attrition == 'No'] &lt;- summary$count[summary$Attrition == 'No'] / nrow(Talent_Train[Talent_Train$Attrition == 'No',]) * 100 \n",
+    "summary$perc[summary$Attrition == 'Yes'] &lt;- summary$count[summary$Attrition == 'Yes'] / nrow(Talent_Train[Talent_Train$Attrition == 'Yes',]) * 100 \n",
+    "summary %&gt;% ggplot(aes(x=", Variable, ",y=perc,fill=Attrition)) + geom_bar(stat='identity') + facet_wrap(~Attrition) + \n",
+    "ylab('Percentage') + xlab('", Variable, "') + ggtitle('", Variable, " Distribution Based on Attrition Value') + theme_minimal() \n"
+  )
+    
+    # Execute the command
+    plot &lt;- eval(parse(text = command))
+    
+    print(plot)
+  }
+}
+---
+</code></pre></div></div> <div style="overflow-x: auto; white-space: nowrap; padding: 5px;"> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic1.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic1.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic1.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic1.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D_C/Pic2.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D_C/Pic2.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D_C/Pic2.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D_C/Pic2.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic3.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic3.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic3.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic3.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic4.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic4.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic4.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic4.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic5.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic5.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic5.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic5.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic6.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic6.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic6.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic6.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic7.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic7.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic7.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic7.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic8.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic8.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic8.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic8.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic9.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic9.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic9.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic9.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic10.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic10.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic10.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic10.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic11.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic11.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic11.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic11.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic12.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic12.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic12.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic12.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic13.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic13.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic13.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic13.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic14.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic14.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic14.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic14.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic15.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic15.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic15.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic15.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic16.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic16.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic16.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic16.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic17.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic17.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic17.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic17.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic18.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic18.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic18.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic18.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic19.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic19.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic19.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic19.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic20.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic20.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic20.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic20.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic21.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic21.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic21.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic21.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic22.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic22.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic22.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic22.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic23.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic23.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic23.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic23.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic24.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic24.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic24.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic24.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic25.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic25.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic25.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic25.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic26.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic26.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic26.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic26.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic27.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic27.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic27.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic27.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic28.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic28.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic28.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic28.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic29.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic29.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic29.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic29.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic30.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic30.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic30.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic30.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic31.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic31.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic31.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic31.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic32.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic32.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic32.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic32.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic33.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic33.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic33.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic33.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic34.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic34.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic34.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic34.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_D/Pic35.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_D/Pic35.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_D/Pic35.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_D/Pic35.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <div class="caption"> List of plots of the response variable (Attrition) vs. the various dependent variables (Please scroll through to look at the plots.) </div> <ul> <li>There seems to be a high turnover rate among employees with zero stock options level.</li> <li>There is a higher level of Employee turnover Rate among the employees in Job Level</li> <li>There is a similar distribution overall between the monthly salary and employees that didn’t leave in terms of JobLevel.</li> <li>There are similarities among the yes and no distributions.</li> <li>There seems to be high turnover rate among employees with 10 years of in the company.</li> <li>There seems to be a low turn over rate among employees with 1-3 years in the company.</li> <li>There are similar distribution among the monthly income and the no attrition rates.</li> </ul> <h2 id="looking-at-the-pvalue-distributions-for-the-attrition">LOOKING AT THE PVALUE DISTRIBUTIONS FOR THE ATTRITION</h2> <p>Looking at how each variable in the model, significantly impacts our response variable (MonthlyIncome)</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+model &lt;-glm(Attrition ~ ., data = Talent_Train, family="binomial")
+
+# Extract variable names
+variable_names &lt;- rownames(summary(model)$coefficients)
+
+# getting the  p-values from the model3
+p_values &lt;- summary(model)$coefficients[, 4]  # Assuming p-values are in the 4th column of the summary table
+p_values &lt;- data.frame(p_values)$p_values
+
+df &lt;- data.frame(variable_names, p_values) #combining the pvalues and variable names into a dataframe
+
+df &lt;- df[!df$p_value == 0 , ] #removing varaiables with pvalue = 0
+df$p_values &lt;- log(df$p_values)  * -1
+
+# Rank p-values in the dataset from max to min
+df$rank &lt;- rank(-df$p_value)
+
+sorted_df &lt;- df[order(df$rank), ]
+
+sorted_df
+
+
+barplot(df$p_values, 
+        main = "P-values of Regression Coefficients less than the significance level 0.05", 
+        xlab = "Variables", 
+        ylab = "P-value",
+        names.arg = df$variable_names,
+        las = 2,  # Rotate x-axis labels vertically for better readability
+        col = "steelblue",  # Set color of bars
+        ylim = c(exp(0.05) * -1, max(sorted_df$p_values) * 1.2)  # Set ylim from the significance level to the max p-values
+        
+)
+
+library(ggplot2)
+ggplot(sorted_df,aes(variable_names,p_values, fill = ifelse(p_values &gt; (exp(0.05) * -1), "Positive", "Negative"))) + #filtering just the highly significant p-values
+  geom_bar(stat="identity", fill = "skyblue") + 
+  #geom_text(aes(label = variable_names), vjust = -0.5) +  # Add text labels on top of bars
+  scale_fill_manual(values = c("Positive" = "skyblue", "Negative" = "salmon")) +
+  labs(x = "Variables", y = "P-values", title = "P-values of Regression Coefficients less than the significance level 0.05") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))  # Rotate x-axis labels for better readability
+---
+</code></pre></div></div> <div style="overflow-x: auto; white-space: nowrap; padding: 5px;"> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_E/pic1.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_E/pic1.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_E/pic1.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_E/pic1.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_E/pic2.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_E/pic2.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_E/pic2.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_E/pic2.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <div class="caption"> 2 different plots of the p-value distribution (Please scroll through to look at the plots.) </div> <p>From the plot above, we can see that the top 5 highly significant values with respect to the response variable Attrition in terms of its relative most significant to least significant variables are OverTime, JobInvolvement, JobSatisfaction, NumCompaniesWorked, YearsSinceLastPromotion</p> <h2 id="using-forward-selection-to-get-the-variable-with-the-best-auc-metric-for-the-prediction-model-on-the-attrition-variable-i-plan-to-use-only-numeric-variables-for-knn">USING FORWARD SELECTION TO GET THE VARIABLE WITH THE BEST AUC METRIC FOR THE PREDICTION MODEL ON THE ATTRITION VARIABLE I pLAN TO USE ONLY NUMERIC VARIABLES FOR KNN</h2> <p>I plan on using the same strategy as for our regression model. This time i shall look at the Area under the curve (AUROC), which represents of the trade-off between the true positive rate (sensitivity) and the false positive rate (1 - specificity) as the classification threshold is varied. Ill be looking for the variables that provides the maximum auroc using a general logistiic model</p> <h2 id="getting-the-1st-variable">GETTING THE 1ST VARIABLE:</h2> <p>Im looking for the perfect (Attrition ~ dependent variable) combination to get the maximum auroc score</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+Talent_Clean &lt;- Talent_Train %&gt;% select(Age, DailyRate, DistanceFromHome, Education, EmployeeCount, EmployeeNumber, EnvironmentSatisfaction, HourlyRate, JobInvolvement, JobLevel, JobSatisfaction, MonthlyIncome, MonthlyRate, NumCompaniesWorked, PercentSalaryHike, PerformanceRating, RelationshipSatisfaction, StandardHours, StockOptionLevel, TotalWorkingYears, TrainingTimesLastYear, WorkLifeBalance, YearsAtCompany, YearsInCurrentRole, YearsSinceLastPromotion, YearsWithCurrManager, Over18_binary, Attrition) #selecting only numeric variables
+
+# Forward Selection # 1
+set.seed(21)
+vars &lt;- names(Talent_Clean)
+vars &lt;- vars[vars!="Attrition"] #iterating thru variables that are not "Attrition"
+vars &lt;- vars[vars != "MonthlyIncome"] #iterating thru variables that are not "MonthlyIncome"
+num_vars &lt;- length(vars)
+var_aucs &lt;- data.frame("vars" = vars)
+num_folds &lt;- 10
+for (j in 1:num_vars) {
+  var &lt;- vars[j]
+  #print(var)
+  folds &lt;- createFolds(Talent_Clean$Attrition, k = num_folds)
+  auc_scores &lt;- numeric(num_folds)
+  for (i in 1:num_folds) {
+    train_indices &lt;- unlist(folds[-i])
+    test_indices &lt;- unlist(folds[i])
+    train &lt;- Talent_Clean[train_indices, ]
+    test &lt;- Talent_Clean[test_indices, ]
+    form &lt;- as.formula(paste("Attrition ~ ",var,sep=""))
+    model &lt;- glm(form, data = train, family = "binomial")
+    predictions &lt;- predict(model, newdata = test, type = "response")
+    roc &lt;- roc(response=test$Attrition,predictor=predictions,levels=c("No", "Yes"),direction = "&gt;")
+    auc_scores[i] &lt;- auc(roc) #calculating the area under the curve
+  }
+  var_aucs$auc[var_aucs$var == var] &lt;- mean(auc_scores)
+}
+
+max_auc = max(var_aucs$auc) #finding the max_auc
+max_auc_variable &lt;- var_aucs$vars[which.max(var_aucs$auc)]
+
+cat("optimum Variable is ", max_auc_variable, " with a maximum auc of ", max_auc)s
+---
+</code></pre></div></div> <blockquote> <p>optimum Variable is StockOptionLevel with a maximum auc of 0.6940313</p> </blockquote> <h2 id="gettiong-the-third-variable">GETTIONG THE THIRD VARIABLE</h2> <p>Next ill look for the optimumm variable to add to our classification model (Attrition ~ TotalWorkingYears + StockOptionLevel) in order to provide the maximum auc score</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+# Forward Selection # 2
+set.seed(21)
+vars &lt;- names(Talent_Clean)
+vars &lt;- vars[vars!="Attrition"] #iterating thru variables that are not "Attrition"
+vars &lt;- vars[vars != "MonthlyIncome"] #iterating thru variables that are not "MonthlyIncome"
+vars &lt;- vars[vars != "TotalWorkingYears "] #iterating thru variables that are not "TotalWorkingYears "
+num_vars &lt;- length(vars)
+var_aucs &lt;- data.frame("vars" = vars)
+num_folds &lt;- 10
+numks = 60
+for (j in 1:num_vars) {
+  var &lt;- vars[j]
+  #print(var)
+  folds &lt;- createFolds(Talent_Clean$Attrition, k = num_folds)
+  auc_scores &lt;- numeric(num_folds)
+  for (i in 1:num_folds) {
+    train_indices &lt;- unlist(folds[-i])
+    test_indices &lt;- unlist(folds[i])
+    train &lt;- Talent_Clean[train_indices, ]
+    test &lt;- Talent_Clean[test_indices, ]
+    form &lt;- as.formula(paste("Attrition ~ TotalWorkingYears  + ",var,sep=""))
+    model &lt;- glm(form, data = train, family = "binomial")
+    predictions &lt;- predict(model, newdata = test, type = "response")
+    roc &lt;- roc(response=test$Attrition,predictor=predictions,levels=c("No", "Yes"),direction = "&gt;")
+    auc_scores[i] &lt;- auc(roc) #calculating the area under the curve
+  }
+  var_aucs$auc[var_aucs$var == var] &lt;- mean(auc_scores)
+}
+
+max_auc = max(var_aucs$auc) #finding the max_auc
+max_auc_variable &lt;- var_aucs$vars[which.max(var_aucs$auc)]
+
+cat("optimum Variable is ", max_auc_variable, " with a maximum auc of ", max_auc) 
+---
+</code></pre></div></div> <blockquote> <p>optimum Variable is StockOptionLevel with a maximum auc of 0.6940313</p> </blockquote> <h2 id="gettiong-the-third-variable-1">GETTIONG THE THIRD VARIABLE</h2> <p>Next ill look for the optimumm variable to add to our classification model (Attrition ~ TotalWorkingYears + StockOptionLevel) in order to provide the maximum auc score</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+# Forward Selection # 3
+set.seed(21)
+vars &lt;- names(Talent_Clean)
+vars &lt;- vars[vars!="Attrition"] #iterating thru variables that are not "Attrition"
+vars &lt;- vars[vars != "MonthlyIncome"] #iterating thru variables that are not "MonthlyIncome"
+vars &lt;- vars[vars != "TotalWorkingYears "] #iterating thru variables that are not "TotalWorkingYears "
+vars &lt;- vars[vars != "StockOptionLevel"] #iterating thru variables that are not "JobRole"
+num_vars &lt;- length(vars)
+var_aucs &lt;- data.frame("vars" = vars)
+num_folds &lt;- 10
+numks = 60
+for (j in 1:num_vars) {
+  var &lt;- vars[j]
+  #print(var)
+  folds &lt;- createFolds(Talent_Clean$Attrition, k = num_folds)
+  auc_scores &lt;- numeric(num_folds)
+  for (i in 1:num_folds) {
+    train_indices &lt;- unlist(folds[-i])
+    test_indices &lt;- unlist(folds[i])
+    train &lt;- Talent_Clean[train_indices, ]
+    test &lt;- Talent_Clean[test_indices, ]
+    form &lt;- as.formula(paste("Attrition ~ TotalWorkingYears  + StockOptionLevel + ",var,sep=""))
+    model &lt;- glm(form, data = train, family = "binomial")
+    predictions &lt;- predict(model, newdata = test, type = "response")
+    roc &lt;- roc(response=test$Attrition,predictor=predictions,levels=c("No", "Yes"),direction = "&gt;")
+    auc_scores[i] &lt;- auc(roc) #calculating the area under the curve
+  }
+  var_aucs$auc[var_aucs$var == var] &lt;- mean(auc_scores)
+}
+
+max_auc = max(var_aucs$auc) #finding the max_auc
+max_auc_variable &lt;- var_aucs$vars[which.max(var_aucs$auc)]
+
+cat("optimum Variable is ", max_auc_variable, " with a maximum auc of ", max_auc)
+---
+</code></pre></div></div> <blockquote> <p>optimum Variable is JobInvolvement with a maximum auc of 0.7157045</p> </blockquote> <h2 id="looking-at-the-sensitivity--specificity-metric-for-nb">Looking at the Sensitivity &amp; Specificity Metric FOR NB</h2> <p>Next ill be looking at the sensitivity and specificity metric of our classification model using k- Nearest Neigbors (KNN) and Naive Bayes</p> <h2 id="naive-bayes">NAIVE BAYES</h2> <h4 id="finding-the-threshold">FINDING THE THRESHOLD</h4> <p>finding the best threshold for our Naive Bayes Model, in order to provide the best metric. The threshold will be gotten from the maximum F1 score, which is a metric used to evaluate the performance of a binary classification model. It combines both precision and recall into a single metric and is particularly useful when the classes are imbalanced.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+set.seed(123)
+Talent_Clean &lt;- Talent_Train %&gt;% select(Attrition, TotalWorkingYears, StockOptionLevel, JobInvolvement) #selecting our variables
+trainIndices &lt;- sample(seq(1:length(Talent_Clean$Attrition)), round(0.7 * length(Talent_Clean$Attrition)))
+train &lt;- Talent_Clean[trainIndices, ]
+test &lt;- Talent_Clean[-trainIndices, ]
+
+train$Attrition &lt;-factor(train$Attrition, levels=c('Yes','No')) #factoring the response variable
+test$Attrition &lt;-factor(test$Attrition, levels=c('Yes','No')) #factoring the response variable
+
+naive_bayes_model &lt;- naiveBayes(Attrition ~ TotalWorkingYears  + StockOptionLevel + JobInvolvement, data = train)
+  
+# Make predictions on the test set
+predictions &lt;- predict(naive_bayes_model, test)
+
+# Evaluate model performance
+conf_matrix &lt;- confusionMatrix(predictions, test$Attrition)
+
+# Print the confusion matrix
+#print(conf_matrix)
+
+# Adjust label levels for better interpretation
+test$Attrition &lt;- relevel(test$Attrition, ref = "No")
+
+# Make predictions with probabilities
+predictions_with_probs &lt;- predict(naive_bayes_model, test, type = "raw")
+
+# Get probabilities of the positive class ("Yes")
+probs &lt;- predictions_with_probs[, "Yes"]
+
+# Define a new threshold
+new_threshold &lt;- 0.5
+
+# Create new labels based on the new threshold
+new_labels &lt;- ifelse(probs &gt; new_threshold, "Yes", "No")
+
+# Convert the predicted labels to a factor with the same levels as the actual labels
+new_labels_factor &lt;- factor(new_labels, levels = levels(test$Attrition))
+
+# Evaluate model performance with the new threshold
+new_conf_matrix &lt;- confusionMatrix(new_labels_factor, test$Attrition)
+
+# Print the confusion matrix with the new threshold
+#print(new_conf_matrix)
+
+# Calculate the macro F1 score with the new threshold
+macro_f1_new_threshold &lt;- mean(c(new_conf_matrix[4]$byClass["F1"], conf_matrix[4]$byClass["F1"]))
+---
+</code></pre></div></div> <blockquote> <p>Our optimum threshold is 0.5725983</p> </blockquote> <h4 id="looking-at-the-metrics">Looking at the Metrics</h4> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+test$Attrition = relevel(test$Attrition, ref = 'Yes')
+
+# Train a Naive Bayes model
+naive_bayes_model &lt;- naiveBayes(Attrition ~ TotalWorkingYears  + StockOptionLevel + JobInvolvement, data = train)
+
+# Get predicted probabilities for the positive class (assuming 'Yes' is the positive class)
+predicted_probabilities &lt;- predict(naive_bayes_model, test, type = "raw")[, "Yes"]
+
+# Define threshold
+threshold &lt;- macro_f1_new_threshold  # Adjust as needed
+
+# Adjust predictions based on threshold
+adjusted_predictions &lt;- ifelse(predicted_probabilities &gt; threshold, "Yes", "No")
+
+# Evaluate model performance
+adjusted_predictions &lt;- factor(adjusted_predictions, levels = levels(test$Attrition))
+
+conf_matrix &lt;- confusionMatrix(table(adjusted_predictions, test$Attrition))
+print(conf_matrix)
+
+accuracy_nb &lt;- conf_matrix$overall["Accuracy"]
+sensitivity_nb &lt;- conf_matrix$byClass["Sensitivity"]
+specificity_nb &lt;- conf_matrix$byClass["Specificity"]
+---
+</code></pre></div></div> <div class="row"> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Conf_Matrix/Naive_Bayes.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Conf_Matrix/Naive_Bayes.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Conf_Matrix/Naive_Bayes.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Conf_Matrix/Naive_Bayes.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <div class="caption"> The confusion Matrix for the Naive Bayes Model </div> <p>The sensitivity and specificity were pretty low, past our target of &gt; 0.6 for both sensitivity and specificity. We got sensitivity to be : 0.1153846 (This is due to the low amount of Nos.) , and specificity as : 0.9856459. Accuracy is 0.5505 and Pvalue is 1.94e-09 &lt; sig level, which is Highly significant</p> <p>##KNN MODEL</p> <h4 id="looking-at-the-sensitivity--specificity-metric-for-knn-using-undersampling">Looking at the Sensitivity &amp; Specificity Metric FOR KNN using undersampling</h4> <p>I plan on using undersampling to get our metrics, due to the imbalance between Yes and No attrition rates. I am basically reducing the No dataset, in order to match the Yes dataset, to improve sensitivity.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+set.seed(123)
+Talent_Clean &lt;- Talent_Train %&gt;% select(Attrition, TotalWorkingYears, StockOptionLevel, JobInvolvement, ID) #selecting our variables
+trainIndices &lt;- sample(seq(1:length(Talent_Clean$Attrition)), round(0.7 * length(Talent_Clean$Attrition)))
+train &lt;- Talent_Clean[trainIndices, ]
+test &lt;- Talent_Clean[-trainIndices, ]
+
+# Sample only a subset of 'No' instances to balance the classes
+OnlyNoAttrition &lt;- train %&gt;% filter(Attrition == "No")
+numYesAttrition &lt;- sum(train$Attrition == "Yes")
+sampled_NoAttrition &lt;- OnlyNoAttrition[sample(seq(1, nrow(OnlyNoAttrition), 1), numYesAttrition),]
+
+# Combine sampled 'No' instances with 'Yes' instances to create a balanced dataset
+balanced_data &lt;- rbind(train %&gt;% filter(Attrition == "Yes"), sampled_NoAttrition)
+
+classifications = knn(balanced_data[,2:4],train[,2:4], balanced_data[,1], prob = TRUE, k = 5) # using the F (original dataset) as the test set
+
+table(classifications,train[,1])
+CM = confusionMatrix(table(classifications,train[,1]), mode = "everything")
+
+#Get Macro F1
+train$Attrition = relevel(train$Attrition, ref = 'Yes')
+classifications = knn(train[,2:4],train[2:4],train[,1], prob = TRUE, k = 5)
+CM_Yes = confusionMatrix(table(classifications,train[,1]), mode = "everything") # Note F1
+
+train$Attrition = relevel(train$Attrition, ref = 'No')
+classifications = knn(train[,2:4],train[2:4],train[,1], prob = TRUE, k = 5)
+CM_No = confusionMatrix(table(classifications,train[,1]), mode = "everything") # Note F1
+
+Macro_F1_Under = mean(c(CM_Yes[4]$byClass["F1"],CM_No[4]$byClass["F1"])) 
+Macro_F1_Under
+---
+</code></pre></div></div> <blockquote> <p>The threshold is 0.5892183</p> </blockquote> <h4 id="testing-the-metric">TESTING THE METRIC</h4> <p>Testing for sensitivity and specificity</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+test$Attrition = relevel(test$Attrition, ref = 'Yes')
+
+knn_model &lt;- knn(balanced_data[,2:4], test[, c(2,3,4)], balanced_data[,1], prob = TRUE,  k = 5)
+
+CM = confusionMatrix(table(knn_model,test[,1]), mode = "everything")
+CM
+
+# Evaluate model performance
+
+accuracy_knn &lt;- CM$overall["Accuracy"]
+sensitivity_knn &lt;- CM$byClass["Sensitivity"]
+specificity_knn &lt;- CM$byClass["Specificity"]
+
+test$predictions &lt;- knn_model
+
+# Generation our regression for the test dataset
+new_data &lt;- test %&gt;% select(predictions, ID)
+
+new_data &lt;- new_data[order(new_data$ID), ]
+---
+</code></pre></div></div> <div class="row"> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Conf_Matrix/KNN.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Conf_Matrix/KNN.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Conf_Matrix/KNN.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Conf_Matrix/KNN.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <div class="caption"> The confusion Matrix for the KNN Model </div> <h2 id="more-edas">MORE EDAS</h2> <h4 id="metrics-comparison">METRICS COMPARISON</h4> <p>comparing accuracy, sensitivity and specificity metric for both KNN and naive bayes</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+results_nb &lt;- data.frame(Accuracy = accuracy_nb, Sensitivity = sensitivity_nb, Specificity =  specificity_nb, total = sensitivity_nb + specificity_nb)
+avg_nb = colMeans(results_nb[, c("Accuracy", "Sensitivity", "Specificity", "total")])
+avg_nb
+
+results_knn &lt;- data.frame(Accuracy = accuracy_knn, Sensitivity = sensitivity_knn, Specificity = specificity_knn, total = sensitivity_knn + specificity_knn)
+avg_knn = colMeans(results_knn[, c("Accuracy", "Sensitivity", "Specificity", "total")])
+avg_knn
+
+
+#Getting the barchart plots for average analysis
+combined_results &lt;- cbind(data.frame(avg_nb), data.frame(avg_knn))
+
+
+barplot(t(combined_results[1, ]), beside = TRUE, col = rainbow(2),
+        main = "Accuracy Comparison of both knn and nb models",
+        ylab = "Accuracy (%)", legend.text = names(combined_results[1, ]))
+
+barplot(t(combined_results[2, ]), beside = TRUE, col = rainbow(2),
+        main = "Sensitivity Comparison of both knn and nb models",
+        ylab = "Sensitivity (%)", legend.text = names(combined_results[2, ]))
+
+barplot(t(combined_results[3, ]), beside = TRUE, col = rainbow(2),
+        main = "Specificity Comparison of both knn and nb models",
+        ylab = "Specificity (%)", legend.text = names(combined_results[3, ]))
+
+barplot(t(combined_results[4, ]), beside = TRUE, col = rainbow(2),
+        main = "Specificity Comparison of both knn and nb models",
+        ylab = "Specificity + Sensitivity (%)", legend.text = names(combined_results[4, ]))
+---
+</code></pre></div></div> <div style="overflow-x: auto; white-space: nowrap; padding: 5px;"> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/Group_F/pic1.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/Group_F/pic1.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/Group_F/pic1.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/Group_F/pic1.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/GROUP_F/pic2.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/GROUP_F/pic2.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/GROUP_F/pic2.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/GROUP_F/pic2.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/GROUP_F/pic3.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/GROUP_F/pic3.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/GROUP_F/pic3.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/GROUP_F/pic3.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0" style="display: inline-block;"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/DS_6306_Project_2/GROUP_F/pic4.PNG-480.webp 480w,/assets/img/DS_6306_Project_2/GROUP_F/pic4.PNG-800.webp 800w,/assets/img/DS_6306_Project_2/GROUP_F/pic4.PNG-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/DS_6306_Project_2/GROUP_F/pic4.PNG" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="example image" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <div class="caption"> Plots comparing the accuracy, sensitivity, specificity, and specificity + sensitivity metrics for noth kNN and NaiveBayes model. (Please scroll through to look at the plots) </div> <ul> <li>Knn has a higher sensitivity and specificity + sensitivity.</li> <li>Naïve Bayes has higher specificity and accuracy.</li> </ul> <h1 id="conclusion">CONCLUSION</h1> <h2 id="tips-for-frito-lay">TIPS FOR FRITO LAY</h2> <ul> <li>Try providing more incentives to employees to improve retention rate</li> <li>Let the stock options match the amount of years the employees worked</li> </ul> <h2 id="future-work">FUTURE WORK</h2> <ul> <li>Try to improve sensitivity values for the classification model.</li> <li>Explore other variables that might affect the classification and prediction model.</li> <li>Try using other classification techniques to predict my model likeSupport Vector Machine (SVM) or RandomForest</li> </ul> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2024 Oluwadamilola (Dammy) Ebenezer Owolabi. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script src="/assets/js/bootstrap.bundle.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js" type="text/javascript"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script> <script src="/assets/js/no_defer.js?5d75c11f89cd96294bf5e6dd1ee1bb30"></script> <script defer src="/assets/js/common.js?fcfacfb8c6281f5e68d5a7d348186eb1"></script> <script defer src="/assets/js/copy_code.js?12775fdf7f95e901d7119054556e495f" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script type="text/javascript">window.MathJax={tex:{tags:"ams"}};</script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script> <script async src="https://www.googletagmanager.com/gtag/js?id="></script> <script>function gtag(){window.dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","");</script> <script type="text/javascript">function progressBarSetup(){"max"in document.createElement("progress")?(initializeProgressElement(),$(document).on("scroll",function(){progressBar.attr({value:getCurrentScrollPosition()})}),$(window).on("resize",initializeProgressElement)):(resizeProgressBar(),$(document).on("scroll",resizeProgressBar),$(window).on("resize",resizeProgressBar))}function getCurrentScrollPosition(){return $(window).scrollTop()}function initializeProgressElement(){let e=$("#navbar").outerHeight(!0);$("body").css({"padding-top":e}),$("progress-container").css({"padding-top":e}),progressBar.css({top:e}),progressBar.attr({max:getDistanceToScroll(),value:getCurrentScrollPosition()})}function getDistanceToScroll(){return $(document).height()-$(window).height()}function resizeProgressBar(){progressBar.css({width:getWidthPercentage()+"%"})}function getWidthPercentage(){return getCurrentScrollPosition()/getDistanceToScroll()*100}const progressBar=$("#progress");window.onload=function(){setTimeout(progressBarSetup,50)};</script> </body> </html>
