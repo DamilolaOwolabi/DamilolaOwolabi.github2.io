@@ -37,7 +37,7 @@ My aim is to provide valuable insight on what factors affects attrition rate and
 
 ## LOADING LIBRARIES
 
-    ~~~ R
+    ~~~R
     library(ggplot2) #For data visualization
     library(dplyr)  # For data manipulation
     library(tidyverse)
@@ -102,7 +102,7 @@ From the Train talent data, there are 870 random employees (rows), all ordered b
 
 ## LOOKING AT THE DATASET 
 
-    ~~~ R
+    ~~~ruby
     set.seed(1234)
 
     # Set levels for Talent_Train
