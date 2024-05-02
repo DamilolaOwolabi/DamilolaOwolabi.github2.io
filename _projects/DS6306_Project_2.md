@@ -37,7 +37,7 @@ My aim is to provide valuable insight on what factors affects attrition rate and
 
 ## LOADING LIBRARIES
 
-    ---R
+    ~~~ R
     library(ggplot2) #For data visualization
     library(dplyr)  # For data manipulation
     library(tidyverse)
@@ -47,12 +47,12 @@ My aim is to provide valuable insight on what factors affects attrition rate and
     library(pROC) # for the ROC curve
     library(class) #calling the knn function
     library(e1071)  # for naiveBayes function
-    ---
+    ~~~
     
     
 ##  GETTING THE CSV FILE FROM AWS USING AWS.S3 PACKAGES
 
-    ---R
+    ~~~ R
     Sys.setenv("AWS_ACCESS_KEY_ID" = "MY_ACCESS_ID",
                "AWS_SECRET_ACCESS_KEY" = MY_SECRET_ACCESS_KEY",
                "AWS_DEFAULT_REGION" = "MY_DEFAULT_REGION")
@@ -95,14 +95,14 @@ My aim is to provide valuable insight on what factors affects attrition rate and
     
     #Our response variable will be based on the attrition variable
     
-    ---
+    ~~~
 
 From the Train talent data, there are 870 random employees (rows), all ordered by IDD, and 36 variables (columns).
 
 
 ## LOOKING AT THE DATASET 
 
-    ---R
+    ~~~
     set.seed(1234)
 
     # Set levels for Talent_Train
@@ -118,7 +118,7 @@ From the Train talent data, there are 870 random employees (rows), all ordered b
     
     yes_data <- Talent_Train[Talent_Train$Attrition == 'Yes',] # 4250
     no_data <- Talent_Train[Talent_Train$Attrition == 'No',] # 31918
-    ---
+    ~~~
     
 The rate of Yes Attrition to no Attrition is 140: 730. Which presents the issue of an unbalanced data. This might be costly to sensitivity metric. Thankfully, i come equipped with knowledge from my Data Science professor (Prof. Bivin Sadler) on how to resolve this.
 
@@ -126,12 +126,12 @@ The rate of Yes Attrition to no Attrition is 140: 730. Which presents the issue 
 ## ADDRESSING MISSING VALUES
 It is important to look at missing values earlier on, as it might be affect our models
 
-    ---R
+    ~~~ R
     NaSum <- sum(is.na(Talent_Train)) #check for missing values in the Talent Dataset
     
     # Print the total count of missing values
     print(paste("Total missing values:", NaSum))
-    ---
+    ~~~ 
     
 > [1] "Total missing values: 0"
 
@@ -145,7 +145,7 @@ From the results above, there appears to be no missing values in the Dataset (th
 
 ## Looking at the Summary Statistics 
 
-    ---R
+    ~~~ R
         
     # Using a for loop to get the summary statistics
     
@@ -204,7 +204,7 @@ From the results above, there appears to be no missing values in the Dataset (th
       #print(summary_stats2_categorical[[col_name]])
       cat("\n")
     }
-    ---
+    ~~~
     
 > There are   28  numerical variables 
 > There are   8  categorical variables
@@ -216,7 +216,7 @@ From our summary Statistics, there are 28 numerical variables and 8 categorical 
 
 Since the variables are a lot, and i plan on saving time, I plan using a for loop to iterate through the variables and plot their box plots to visualize their summary statistics
 
-    ---R
+    ~~~ R
         for (Variable in names(Talent_Train)){
       # Check if the column is numeric
       if (is.numeric(Talent_Train[[Variable]])) {
@@ -237,7 +237,7 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
         print(plot)
       }
     }
-    ---
+    ~~~
 
 <div style="overflow-x: auto; white-space: nowrap; padding: 5px;">
     <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
