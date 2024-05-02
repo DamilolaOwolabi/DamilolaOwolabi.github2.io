@@ -18,6 +18,7 @@ Here is the link to other files related to the project in my GitHub Repository: 
         <iframe width="560" height="315" src="https://www.youtube.com/embed/hwyr3ZPVgIQ?si=OlWzfU2HNfsL_NWf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 </div>
+
 <div class="caption">
     Here is the Youtube Video of my presentation.
 </div>
@@ -36,7 +37,7 @@ My aim is to provide valuable insight on what factors affects attrition rate and
 
 ## LOADING LIBRARIES
 
-    ---
+    ---R
     library(ggplot2) #For data visualization
     library(dplyr)  # For data manipulation
     library(tidyverse)
@@ -51,7 +52,7 @@ My aim is to provide valuable insight on what factors affects attrition rate and
     
 ##  GETTING THE CSV FILE FROM AWS USING AWS.S3 PACKAGES
 
-    ---
+    ---R
     Sys.setenv("AWS_ACCESS_KEY_ID" = "MY_ACCESS_ID",
                "AWS_SECRET_ACCESS_KEY" = MY_SECRET_ACCESS_KEY",
                "AWS_DEFAULT_REGION" = "MY_DEFAULT_REGION")
@@ -101,7 +102,7 @@ From the Train talent data, there are 870 random employees (rows), all ordered b
 
 ## LOOKING AT THE DATASET 
 
-    ---
+    ---R
     set.seed(1234)
 
     # Set levels for Talent_Train
@@ -125,7 +126,7 @@ The rate of Yes Attrition to no Attrition is 140: 730. Which presents the issue 
 ## ADDRESSING MISSING VALUES
 It is important to look at missing values earlier on, as it might be affect our models
 
-    ---
+    ---R
     NaSum <- sum(is.na(Talent_Train)) #check for missing values in the Talent Dataset
     
     # Print the total count of missing values
@@ -144,7 +145,7 @@ From the results above, there appears to be no missing values in the Dataset (th
 
 ## Looking at the Summary Statistics 
 
-    ---
+    ---R
         
     # Using a for loop to get the summary statistics
     
@@ -215,7 +216,7 @@ From our summary Statistics, there are 28 numerical variables and 8 categorical 
 
 Since the variables are a lot, and i plan on saving time, I plan using a for loop to iterate through the variables and plot their box plots to visualize their summary statistics
 
-    ---
+    ---R
         for (Variable in names(Talent_Train)){
       # Check if the column is numeric
       if (is.numeric(Talent_Train[[Variable]])) {
@@ -336,8 +337,7 @@ From the box plots, 4 variables have really bad spread of data. They are : Emplo
 
 Since the variables are a lot, and i plan on saving time, I plan using a for loop to iterate through the variables and plot their bar plots to visualize their EDA
 
-    ---
-    
+    ---R
         # Iterate through the dataset and execute the plot command
     for (Variable in names(Talent_Train)){
       # Check if the column is numeric
@@ -480,7 +480,7 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
 
 Looking at how each variable in the model, significantly impacts our response variable (MonthlyIncome)
 
-    ---
+    ---R
     
     model <-lm(MonthlyIncome ~ ., data = Talent_Train)
 
@@ -547,7 +547,7 @@ My plan is to iterate through finding the logistic regression with the min rmse 
 
 Im looking for the perfect (MonhlyIncome ~ dependent variable) combination to get the minimum RMSE
 
-    ---
+    ---R
     # FORWARD SELECTION # 1
     set.seed(21)
     vars <- names(Talent_Train)
@@ -591,7 +591,7 @@ Im looking for the perfect (MonhlyIncome ~ dependent variable) combination to ge
 
 Next ill look for the optimumm variable to add to our regression model (Monthly ~ JobLevel) in order to provide the minimum rmse
 
-    ---
+    ---R
     # FORWARD SELECTION # 2
     set.seed(21)
     vars <- names(Talent_Train)
@@ -635,7 +635,7 @@ Next ill look for the optimumm variable to add to our regression model (Monthly 
 
 Next ill look for the optimumm variable to add to our regression model (Monthly ~ JobLevel + JobRole) in order to provide the minimum rmse
 
-    ---
+    ---R
     # FORWARD SELECTION # 3
     set.seed(21)
     vars <- names(Talent_Train)
@@ -680,7 +680,7 @@ Next ill look for the optimumm variable to add to our regression model (Monthly 
 
 Next, ill test our optimum model, wit out dataset, splitting the dataset as test and train with a 70 - 30 split respectively.
 
-    ---
+    ---R
     #splitting 70% - 30%
     trainIndices = sample(seq(1:length(Talent_Train$Age)),round(.7*length(Talent_Train$MonthlyIncome))) #split is 70% and 30%
     train = Talent_Train[trainIndices,] #train datset
@@ -716,7 +716,7 @@ Next, i will try finding the best variables for our predictive classification mo
 ## VISUALIZING THE CATEGORICAl VARIABLEs INTERACTIONS WITH THE RESPONSE VARIABLE (ATTRITION) 
 Looking at the Exploratory data analysis to visualize the relation ship between the attrition rate and other dependent variables
 
-    ---
+    ---R
     # Since the variables are a lot, and i plan on saving time, I plan using a for loop to iterate through the variables and plot their bar plots to visualize their EDA
     # Iterate through the dataset and execute the plot command
     for (Variable in names(Talent_Train)){
@@ -869,7 +869,7 @@ Looking at the Exploratory data analysis to visualize the relation ship between 
 
 Looking at how each variable in the model, significantly impacts our response variable (MonthlyIncome)
 
-    ---
+    ---R
     model <-glm(Attrition ~ ., data = Talent_Train, family="binomial")
 
     # Extract variable names
@@ -937,7 +937,7 @@ I plan on using the same strategy as for our regression model. This time i shall
 
 Im looking for the perfect (Attrition ~ dependent variable) combination to get the maximum auroc score 
 
-    ---
+    ---R
     Talent_Clean <- Talent_Train %>% select(Age, DailyRate, DistanceFromHome, Education, EmployeeCount, EmployeeNumber, EnvironmentSatisfaction, HourlyRate, JobInvolvement, JobLevel, JobSatisfaction, MonthlyIncome, MonthlyRate, NumCompaniesWorked, PercentSalaryHike, PerformanceRating, RelationshipSatisfaction, StandardHours, StockOptionLevel, TotalWorkingYears, TrainingTimesLastYear, WorkLifeBalance, YearsAtCompany, YearsInCurrentRole, YearsSinceLastPromotion, YearsWithCurrManager, Over18_binary, Attrition) #selecting only numeric variables
 
     # Forward Selection # 1
@@ -980,7 +980,7 @@ Im looking for the perfect (Attrition ~ dependent variable) combination to get t
 
 Next ill look for the optimumm variable to add to our classification model (Attrition ~ TotalWorkingYears + StockOptionLevel) in order to provide the maximum auc score
 
-    ---
+    ---R
     # Forward Selection # 2
     set.seed(21)
     vars <- names(Talent_Clean)
@@ -1023,7 +1023,7 @@ Next ill look for the optimumm variable to add to our classification model (Attr
 
 Next ill look for the optimumm variable to add to our classification model (Attrition ~ TotalWorkingYears + StockOptionLevel) in order to provide the maximum auc score
 
-    ---
+    ---R
     # Forward Selection # 3
     set.seed(21)
     vars <- names(Talent_Clean)
@@ -1075,7 +1075,7 @@ Next ill be looking at the sensitivity and specificity metric of our classificat
 
  finding the best threshold for our Naive Bayes Model, in order to provide the best metric. The threshold will be gotten from the maximum F1 score, which is a metric used to evaluate the performance of a binary classification model. It combines both precision and recall into a single metric and is particularly useful when the classes are imbalanced.
  
-    ---
+    ---R
     set.seed(123)
     Talent_Clean <- Talent_Train %>% select(Attrition, TotalWorkingYears, StockOptionLevel, JobInvolvement) #selecting our variables
     trainIndices <- sample(seq(1:length(Talent_Clean$Attrition)), round(0.7 * length(Talent_Clean$Attrition)))
@@ -1129,7 +1129,7 @@ Next ill be looking at the sensitivity and specificity metric of our classificat
 
 #### Looking at the Metrics
 
-    ---
+    ---R
     test$Attrition = relevel(test$Attrition, ref = 'Yes')
     
     # Train a Naive Bayes model
@@ -1175,7 +1175,7 @@ The sensitivity and specificity were pretty low, past our target of > 0.6 for bo
 
 I plan on using undersampling to get our metrics, due to the imbalance between Yes and No attrition rates. I am basically reducing the No dataset, in order to match the Yes dataset, to improve sensitivity.
 
-    ---
+    ---R
     set.seed(123)
     Talent_Clean <- Talent_Train %>% select(Attrition, TotalWorkingYears, StockOptionLevel, JobInvolvement, ID) #selecting our variables
     trainIndices <- sample(seq(1:length(Talent_Clean$Attrition)), round(0.7 * length(Talent_Clean$Attrition)))
@@ -1215,7 +1215,7 @@ I plan on using undersampling to get our metrics, due to the imbalance between Y
 
 Testing for sensitivity and specificity
 
-    ---
+    ---R
     test$Attrition = relevel(test$Attrition, ref = 'Yes')
     
     knn_model <- knn(balanced_data[,2:4], test[, c(2,3,4)], balanced_data[,1], prob = TRUE,  k = 5)
@@ -1255,7 +1255,7 @@ Testing for sensitivity and specificity
 
 comparing accuracy, sensitivity and specificity metric for both KNN and naive bayes
 
-    ---
+    ---R
     results_nb <- data.frame(Accuracy = accuracy_nb, Sensitivity = sensitivity_nb, Specificity =  specificity_nb, total = sensitivity_nb + specificity_nb)
     avg_nb = colMeans(results_nb[, c("Accuracy", "Sensitivity", "Specificity", "total")])
     avg_nb
