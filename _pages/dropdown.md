@@ -2,7 +2,7 @@
 layout: page
 title: submenus
 nav: true
-nav_order: 9
+nav_order: 10
 dropdown: true
 children:
   - title: publications
@@ -19,4 +19,7 @@ children:
   - title: divider
   - title: Apps
     permalink: /Apps/
+  - title: divider
+  - title: test_projects
+    permalink: /test_projects/
 ---
