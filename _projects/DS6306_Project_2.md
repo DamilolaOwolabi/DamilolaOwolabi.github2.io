@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Frito Lay Talent Attrition Analysis
-description: The project aims to analyse the attrition rate and monthly income among employees in the United States.
+description: The project aims to analyse the attrition rate and monthly income among employees in the United States using R.
 img: assets/img/DS_6306_Project_2/ds_6306_PROJECT_2_PIC2.0.jpeg
 importance: 1
 category: work
@@ -522,17 +522,17 @@ Looking at how each variable in the model, significantly impacts our response va
       theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))  # Rotate x-axis labels for better readability
     ---
 
-<div style="overflow-x: auto; white-space: nowrap; padding: 5px;">
-    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+<div class="row justify-content-sm-center">
+    <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/GROUP_C/Pic_1.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+    <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/GROUP_C/Pic_2.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
 <div class="caption">
-    2 different plots of the p-value distribution (Please scroll through to look at the plots.)
+    2 different plots of the p-value distribution
 </div>
 
 From the plot above, we can see that the top 5 highly significant values with respect to the response variable y in terms of its relative most significant to least significant variables are JobLevel, JobRole, 	TotalWorkingYears, BusinessTravel, YearsSinceLastPromotion
@@ -912,17 +912,17 @@ Looking at how each variable in the model, significantly impacts our response va
       theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))  # Rotate x-axis labels for better readability
     ---
 
-<div style="overflow-x: auto; white-space: nowrap; padding: 5px;">
-    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+<div class="row justify-content-sm-center">
+    <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_E/pic1.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+    <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_E/pic2.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
 <div class="caption">
-    2 different plots of the p-value distribution (Please scroll through to look at the plots.)
+    2 different plots of the p-value distribution
 </div>
 
 From the plot above, we can see that the top 5 highly significant values with respect to the response variable Attrition in terms of its relative most significant to least significant variables are OverTime, JobInvolvement, JobSatisfaction, NumCompaniesWorked, YearsSinceLastPromotion
@@ -1286,23 +1286,23 @@ comparing accuracy, sensitivity and specificity metric for both KNN and naive ba
             ylab = "Specificity + Sensitivity (%)", legend.text = names(combined_results[4, ]))
     ---
     
-<div style="overflow-x: auto; white-space: nowrap; padding: 5px;">
-    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+<div class="row justify-content-sm-center">
+    <div class="col-sm-4 mt-3 mt-md-0" >
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/Group_F/pic1.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+    <div class="col-sm-4 mt-3 mt-md-0" >
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/GROUP_F/pic2.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+    <div class="col-sm-4 mt-3 mt-md-0" >
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/GROUP_F/pic3.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
+    <div class="col-sm-4 mt-3 mt-md-0" >
         {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project_2/GROUP_F/pic4.PNG" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
 <div class="caption">
-   Plots comparing the accuracy, sensitivity, specificity, and specificity + sensitivity metrics for noth kNN and NaiveBayes model. (Please scroll through to look at the plots)
+   Plots comparing the accuracy, sensitivity, specificity, and specificity + sensitivity metrics for noth kNN and NaiveBayes model. 
 </div> 
 
 - Knn has a higher sensitivity and specificity +  sensitivity.
