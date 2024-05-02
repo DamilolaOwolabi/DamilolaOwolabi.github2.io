@@ -52,7 +52,7 @@ My aim is to provide valuable insight on what factors affects attrition rate and
     
 ##  GETTING THE CSV FILE FROM AWS USING AWS.S3 PACKAGES
 
-    ~~~ ruby
+    ~~~ R
     Sys.setenv("AWS_ACCESS_KEY_ID" = "MY_ACCESS_ID",
                "AWS_SECRET_ACCESS_KEY" = MY_SECRET_ACCESS_KEY",
                "AWS_DEFAULT_REGION" = "MY_DEFAULT_REGION")
@@ -102,7 +102,7 @@ From the Train talent data, there are 870 random employees (rows), all ordered b
 
 ## LOOKING AT THE DATASET 
 
-    ~~~ruby
+    ~~~ R
     set.seed(1234)
 
     # Set levels for Talent_Train
