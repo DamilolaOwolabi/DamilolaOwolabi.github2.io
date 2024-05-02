@@ -4,7 +4,7 @@ title: Frito Lay Talent Attrition Analysis
 description: The project aims to analyse the attrition rate and monthly income among employees in the United States using R.
 img: assets/img/DS_6306_Project_2/ds_6306_PROJECT_2_PIC2.0.jpeg
 importance: 1
-category: work
+category: school
 ---
 
 

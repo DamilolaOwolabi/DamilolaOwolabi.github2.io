@@ -4,7 +4,7 @@ title: House Prices Analysis
 description: The project aims to predict the sale prices of homes in Ames, Iowa using existing data, and programs like R and SAS.
 img: assets/img/DS_6371_Final_Project/Thumbnail/DS_6371_Final_Project_Thumbnail.jpeg
 importance: 2
-category: work
+category: school
 ---
 
 
