@@ -70,12 +70,12 @@ Talent_Test_Salary &lt;- subset(Talent_Test_Salary , select = -c(Over18)) #remov
 yes_data &lt;- Talent_Train[Talent_Train$Attrition == 'Yes',] # 4250
 no_data &lt;- Talent_Train[Talent_Train$Attrition == 'No',] # 31918
 ~~~
-</code></pre></div></div> <p>The rate of Yes Attrition to no Attrition is 140: 730. Which presents the issue of an unbalanced data. This might be costly to sensitivity metric. Thankfully, i come equipped with knowledge from my Data Science professor (Prof. Bivin Sadler) on how to resolve this.</p> <h2 id="addressing-missing-values">ADDRESSING MISSING VALUES</h2> <p>It is important to look at missing values earlier on, as it might be affect our models</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~~~ R
+</code></pre></div></div> <p>The rate of Yes Attrition to no Attrition is 140: 730. Which presents the issue of an unbalanced data. This might be costly to sensitivity metric. Thankfully, i come equipped with knowledge from my Data Science professor (Prof. Bivin Sadler) on how to resolve this.</p> <h2 id="addressing-missing-values">ADDRESSING MISSING VALUES</h2> <p>It is important to look at missing values earlier on, as it might be affect our models</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```R
 NaSum &lt;- sum(is.na(Talent_Train)) #check for missing values in the Talent Dataset
 
 # Print the total count of missing values
 print(paste("Total missing values:", NaSum))
-~~~ 
+```
 </code></pre></div></div> <blockquote> <p>[1] “Total missing values: 0”</p> </blockquote> <p>From the results above, there appears to be no missing values in the Dataset (thank God!!)</p> <h1 id="salary">SALARY</h1> <h2 id="looking-at-the-summary-statistics">Looking at the Summary Statistics</h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~~~ R
     
 # Using a for loop to get the summary statistics
