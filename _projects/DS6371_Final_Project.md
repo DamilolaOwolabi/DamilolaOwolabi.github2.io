@@ -62,7 +62,30 @@ In building my model for the analysis I used a multiple linear regression model 
 
 ## Checking Assumptions
 
-Residual Plots - The residual plots will be in the index, through the cooks d plots we were able to identify the two values that were outliers and identified them as data point 131 and 399. We removed these and they showed a much better fit for the model and a more normalized distribution of our residual plots.
+
+#### Residual Plots 
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic36.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    Original plot of the linear model before transformations or removing of outliers
+</div>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic37.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    Plot of the residuals after transformations and removing of outliers
+</div>
+
+The residual plots will be in the index, through the cooks d plots we were able to identify the two values that were outliers and identified them as data point 131 and 399. We removed these and they showed a much better fit for the model and a more normalized distribution of our residual plots.
 
 #### Influential point analysis (Cook’s D and Leverage)
 
@@ -357,3 +380,187 @@ This analysis hopes to build the best predictive model needed to predict future 
 </div>
 
 Judging from the scatterplot of residuals, there is no evidence against the normality of the sales price conditional on the General living area. There is also no evidence against the linear trend between the sales price versus the General Living Area because the data points converge around the line. We were able to remove the 2 extreme points that were affecting the model using the cook’s D plot. There are 2 more outliers in the residual scatterplot towards the upper right, they were left behind because they might be influential to the model and they are closer to the cluster than the previous 2 datapoints
+
+
+**Cooks D-Plot**
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic19.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+        <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic20.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    Initial vs. Final Cook's D plot
+</div>
+
+Initial: The data points 1299 and 524 are 2 high values in the model that might affect the regression fit, which should be removed.
+
+Final: The cook’s D plot hows the influence of each individual point on the fitted regression line. The previous 2 points with extremely high values have been identified and removed. The two highest values of the line (691, and 1182) have been identified on the residual plot and verified to not affect the model’s p-value.
+
+
+**Leverage Plot**
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic21.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+        <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic22.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    Initial vs. Final Leverage Plot
+</div>
+
+Initial: The leverage shows that there 2 really high influentual points in the data (524, and 1299) that are affecting the plot to veer towards Rstudent > 0 instead of being spread apart.
+
+Final: After the 2 influential plots were removed, the plots show to be more spread apart, hence providing a better fit.
+
+
+#### 2.   Multiple Linear Regression
+
+**Residual Plots**
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic23.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+        <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic24.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    Initial vs. Final Residual plots
+</div>
+
+Judging from the scatterplot of residuals, there is no evidence against the normality of the sales price conditional on the General living area and the number of full baths in the home. There is also no evidence against the linear trend between the sales price versus the General Living Area the number of full baths in the home because the data points converge around the line. We were able to remove the 2 extreme points that were affecting the model using the cook’s D plot
+
+
+**Cooks D-Plot**
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic25.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+        <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic26.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    Initial vs. Final Cook's D plot
+</div>
+
+Initial: The data points 1299 and 524 are 2 high values in the model that might affect the regression fit, which should be removed.
+
+Final: The cook’s D plot hows the influence of each individual point on the fitted regression line. The previous 2 points with extremely high values have been identified and removed. The two highest values of the line (691, and 1182) have been identified on the residual plot and verified to not affect the model’s p-value.
+
+
+**Leverage Plot**
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic27.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+        <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic28.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    Initial vs. Final Cook's Leverage Plot
+</div>
+
+Initial: The leverage shows that there 2 really high influentual points in the data (524, and 1299) that are affecting the plot to veer towards Rstudent > 0 instead of being spread apart.
+
+Final: After the 2 influential plots were removed, the plots show to be more spread apart, hence providing a better fit.
+
+
+#### 3.   Custom Multiple Linear Regression
+
+**Residual Plots**
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic29.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+        <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic30.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    Initial vs. Final Residual plots
+</div>
+
+Judging from the scatterplot of residuals, there is no evidence against the normality of the sales price conditional on the General living area and the overall quality of the homes. There is also no evidence against the linear trend between the sales price versus the General Living Area and the overall quality of the homes, because the data points converge around the line.We were able to remove the 2 extreme points that were affecting the model using the cook’s D plot
+
+
+**Cooks D-Plot**
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic31.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+        <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic32.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    Initial vs. Final Cook's D plot
+</div>
+
+Initial: The data points 1299 and 524 are 2 high values in the model that might affect the regression fit, which should be removed.
+
+Final: The cook’s D plot hows the influence of each individual point on the fitted regression line. The previous 2 points with extremely high values have been identified and removed. The two highest values of the line (691, and 1182) have been identified on the residual plot and verified to not affect the model’s p-value.
+
+
+**Leverage Plot**
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic33.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+        <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic34.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    Initial vs. Final Leverage Plot
+</div>
+
+Initial: The leverage shows that there 2 really high influentual points in the data (524, and 1299) that are affecting the plot to veer towards Rstudent > 0 instead of being spread apart.
+
+Final: After the 2 influential plots were removed, the plots show to be more spread apart, hence providing a better fit.
+
+
+## Comparing Competing Models
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6371_Final_Project/pictures/pic35.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    Model Comparison Table
+</div>
+
+From the comparison above we can see that the custom MLR model of (SalePrice ~ GrLivArea + OverallQual) has the best and lowest Kaggle score of 0.2281. This is because the model has a high adjusted R-squared and a lower CV press compared to the rest.
+
+
+# Conclusion
+
+Based on the model selection analysis, the Kaggle scores, and the adjusted R-squared of each model shown in the table above, the custom MLR Model with a backward model selection is the best model to predict sale prices for homes in Ames, Iowa.
+
+
+.
+
