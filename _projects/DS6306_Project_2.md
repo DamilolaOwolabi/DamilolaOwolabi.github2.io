@@ -337,7 +337,7 @@ From the box plots, 4 variables have really bad spread of data. They are : Emplo
 
 Since the variables are a lot, and i plan on saving time, I plan using a for loop to iterate through the variables and plot their bar plots to visualize their EDA
 
-    ---R
+    ~~~ R
         # Iterate through the dataset and execute the plot command
     for (Variable in names(Talent_Train)){
       # Check if the column is numeric
@@ -357,7 +357,7 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
       }
     }
 
-    ---
+    ~~~
     
  <div style="overflow-x: auto; white-space: nowrap; padding: 5px;">
     <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
@@ -480,7 +480,7 @@ Since the variables are a lot, and i plan on saving time, I plan using a for loo
 
 Looking at how each variable in the model, significantly impacts our response variable (MonthlyIncome)
 
-    ---R
+    ~~~ R
     
     model <-lm(MonthlyIncome ~ ., data = Talent_Train)
 
@@ -520,7 +520,7 @@ Looking at how each variable in the model, significantly impacts our response va
       scale_fill_manual(values = c("Positive" = "skyblue", "Negative" = "salmon")) +
       labs(x = "Variables", y = "P-values", title = "P-values of Regression Coefficients less than the significance level 0.05") +
       theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))  # Rotate x-axis labels for better readability
-    ---
+    ~~~
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
@@ -547,7 +547,7 @@ My plan is to iterate through finding the logistic regression with the min rmse 
 
 Im looking for the perfect (MonhlyIncome ~ dependent variable) combination to get the minimum RMSE
 
-    ---R
+    ~~~ R
     # FORWARD SELECTION # 1
     set.seed(21)
     vars <- names(Talent_Train)
@@ -582,7 +582,7 @@ Im looking for the perfect (MonhlyIncome ~ dependent variable) combination to ge
     
     #printing out rresult
     cat("optimum Variable is ", min_rmse_variable, " with a minimum rmse of ", min_rmse)
-    ---
+    ~~~
     
 > optimum Variable is  JobLevel  with a minimum rmse of  1409.276
 
@@ -591,7 +591,7 @@ Im looking for the perfect (MonhlyIncome ~ dependent variable) combination to ge
 
 Next ill look for the optimumm variable to add to our regression model (Monthly ~ JobLevel) in order to provide the minimum rmse
 
-    ---R
+    ~~~ R
     # FORWARD SELECTION # 2
     set.seed(21)
     vars <- names(Talent_Train)
@@ -626,7 +626,7 @@ Next ill look for the optimumm variable to add to our regression model (Monthly 
     min_rmse_variable <- var_rmse$vars[which.min(var_rmse$rmse)]
     
     cat("optimum Variable is ", min_rmse_variable, " with a minimum rmse of ", min_rmse)
-    ---
+    ~~~
 
 > optimum Variable is  JobRole  with a minimum rmse of  1085.182
 
@@ -635,7 +635,7 @@ Next ill look for the optimumm variable to add to our regression model (Monthly 
 
 Next ill look for the optimumm variable to add to our regression model (Monthly ~ JobLevel + JobRole) in order to provide the minimum rmse
 
-    ---R
+    ~~~ R
     # FORWARD SELECTION # 3
     set.seed(21)
     vars <- names(Talent_Train)
@@ -671,7 +671,7 @@ Next ill look for the optimumm variable to add to our regression model (Monthly 
     min_rmse_variable <- var_rmse$vars[which.min(var_rmse$rmse)]
     
     cat("optimum Variable is ", min_rmse_variable, " with a minimum rmse of ", min_rmse)
-    ---
+    ~~~
     
 > optimum Variable is  TotalWorkingYears  with a minimum rmse of  1061.89
 
@@ -680,7 +680,7 @@ Next ill look for the optimumm variable to add to our regression model (Monthly 
 
 Next, ill test our optimum model, wit out dataset, splitting the dataset as test and train with a 70 - 30 split respectively.
 
-    ---R
+    ~~~ R
     #splitting 70% - 30%
     trainIndices = sample(seq(1:length(Talent_Train$Age)),round(.7*length(Talent_Train$MonthlyIncome))) #split is 70% and 30%
     train = Talent_Train[trainIndices,] #train datset
@@ -700,7 +700,7 @@ Next, ill test our optimum model, wit out dataset, splitting the dataset as test
     
     # Print RMSE
     print(rmse)
-    ---
+    ~~~ 
 
 > [1] 1091.637
 
@@ -716,7 +716,7 @@ Next, i will try finding the best variables for our predictive classification mo
 ## VISUALIZING THE CATEGORICAl VARIABLEs INTERACTIONS WITH THE RESPONSE VARIABLE (ATTRITION) 
 Looking at the Exploratory data analysis to visualize the relation ship between the attrition rate and other dependent variables
 
-    ---R
+    ~~~ R
     # Since the variables are a lot, and i plan on saving time, I plan using a for loop to iterate through the variables and plot their bar plots to visualize their EDA
     # Iterate through the dataset and execute the plot command
     for (Variable in names(Talent_Train)){
@@ -742,7 +742,7 @@ Looking at the Exploratory data analysis to visualize the relation ship between 
         print(plot)
       }
     }
-    ---
+    ~~~
     
  <div style="overflow-x: auto; white-space: nowrap; padding: 5px;">
     <div class="col-sm mt-3 mt-md-0" style="display: inline-block;">
@@ -869,7 +869,7 @@ Looking at the Exploratory data analysis to visualize the relation ship between 
 
 Looking at how each variable in the model, significantly impacts our response variable (MonthlyIncome)
 
-    ---R
+    ~~~ R
     model <-glm(Attrition ~ ., data = Talent_Train, family="binomial")
 
     # Extract variable names
@@ -910,7 +910,7 @@ Looking at how each variable in the model, significantly impacts our response va
       scale_fill_manual(values = c("Positive" = "skyblue", "Negative" = "salmon")) +
       labs(x = "Variables", y = "P-values", title = "P-values of Regression Coefficients less than the significance level 0.05") +
       theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))  # Rotate x-axis labels for better readability
-    ---
+    ~~~ 
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
@@ -937,7 +937,7 @@ I plan on using the same strategy as for our regression model. This time i shall
 
 Im looking for the perfect (Attrition ~ dependent variable) combination to get the maximum auroc score 
 
-    ---R
+    ~~~ R
     Talent_Clean <- Talent_Train %>% select(Age, DailyRate, DistanceFromHome, Education, EmployeeCount, EmployeeNumber, EnvironmentSatisfaction, HourlyRate, JobInvolvement, JobLevel, JobSatisfaction, MonthlyIncome, MonthlyRate, NumCompaniesWorked, PercentSalaryHike, PerformanceRating, RelationshipSatisfaction, StandardHours, StockOptionLevel, TotalWorkingYears, TrainingTimesLastYear, WorkLifeBalance, YearsAtCompany, YearsInCurrentRole, YearsSinceLastPromotion, YearsWithCurrManager, Over18_binary, Attrition) #selecting only numeric variables
 
     # Forward Selection # 1
@@ -971,7 +971,7 @@ Im looking for the perfect (Attrition ~ dependent variable) combination to get t
     max_auc_variable <- var_aucs$vars[which.max(var_aucs$auc)]
     
     cat("optimum Variable is ", max_auc_variable, " with a maximum auc of ", max_auc)s
-    ---
+    ~~~ 
 
 > optimum Variable is  StockOptionLevel  with a maximum auc of  0.6940313
 
@@ -980,7 +980,7 @@ Im looking for the perfect (Attrition ~ dependent variable) combination to get t
 
 Next ill look for the optimumm variable to add to our classification model (Attrition ~ TotalWorkingYears + StockOptionLevel) in order to provide the maximum auc score
 
-    ---R
+    ~~~ R
     # Forward Selection # 2
     set.seed(21)
     vars <- names(Talent_Clean)
@@ -1014,7 +1014,7 @@ Next ill look for the optimumm variable to add to our classification model (Attr
     max_auc_variable <- var_aucs$vars[which.max(var_aucs$auc)]
     
     cat("optimum Variable is ", max_auc_variable, " with a maximum auc of ", max_auc) 
-    ---
+    ~~~
 
 > optimum Variable is  StockOptionLevel  with a maximum auc of  0.6940313
 
@@ -1023,7 +1023,7 @@ Next ill look for the optimumm variable to add to our classification model (Attr
 
 Next ill look for the optimumm variable to add to our classification model (Attrition ~ TotalWorkingYears + StockOptionLevel) in order to provide the maximum auc score
 
-    ---R
+    ~~~ R
     # Forward Selection # 3
     set.seed(21)
     vars <- names(Talent_Clean)
@@ -1058,7 +1058,7 @@ Next ill look for the optimumm variable to add to our classification model (Attr
     max_auc_variable <- var_aucs$vars[which.max(var_aucs$auc)]
     
     cat("optimum Variable is ", max_auc_variable, " with a maximum auc of ", max_auc)
-    ---
+    ~~~ 
     
 > optimum Variable is  JobInvolvement  with a maximum auc of  0.7157045
 
@@ -1075,7 +1075,7 @@ Next ill be looking at the sensitivity and specificity metric of our classificat
 
  finding the best threshold for our Naive Bayes Model, in order to provide the best metric. The threshold will be gotten from the maximum F1 score, which is a metric used to evaluate the performance of a binary classification model. It combines both precision and recall into a single metric and is particularly useful when the classes are imbalanced.
  
-    ---R
+    ~~~ R
     set.seed(123)
     Talent_Clean <- Talent_Train %>% select(Attrition, TotalWorkingYears, StockOptionLevel, JobInvolvement) #selecting our variables
     trainIndices <- sample(seq(1:length(Talent_Clean$Attrition)), round(0.7 * length(Talent_Clean$Attrition)))
@@ -1122,14 +1122,14 @@ Next ill be looking at the sensitivity and specificity metric of our classificat
     
     # Calculate the macro F1 score with the new threshold
     macro_f1_new_threshold <- mean(c(new_conf_matrix[4]$byClass["F1"], conf_matrix[4]$byClass["F1"]))
-    ---
+    ~~~ 
 
 > Our optimum threshold is 0.5725983
 
 
 #### Looking at the Metrics
 
-    ---R
+    ~~~ R
     test$Attrition = relevel(test$Attrition, ref = 'Yes')
     
     # Train a Naive Bayes model
@@ -1153,7 +1153,7 @@ Next ill be looking at the sensitivity and specificity metric of our classificat
     accuracy_nb <- conf_matrix$overall["Accuracy"]
     sensitivity_nb <- conf_matrix$byClass["Sensitivity"]
     specificity_nb <- conf_matrix$byClass["Specificity"]
-    ---
+    ~~~ 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -1175,7 +1175,7 @@ The sensitivity and specificity were pretty low, past our target of > 0.6 for bo
 
 I plan on using undersampling to get our metrics, due to the imbalance between Yes and No attrition rates. I am basically reducing the No dataset, in order to match the Yes dataset, to improve sensitivity.
 
-    ---R
+    ~~~ R
     set.seed(123)
     Talent_Clean <- Talent_Train %>% select(Attrition, TotalWorkingYears, StockOptionLevel, JobInvolvement, ID) #selecting our variables
     trainIndices <- sample(seq(1:length(Talent_Clean$Attrition)), round(0.7 * length(Talent_Clean$Attrition)))
@@ -1206,7 +1206,7 @@ I plan on using undersampling to get our metrics, due to the imbalance between Y
     
     Macro_F1_Under = mean(c(CM_Yes[4]$byClass["F1"],CM_No[4]$byClass["F1"])) 
     Macro_F1_Under
-    ---
+    ~~~ 
 
 > The threshold is 0.5892183
 
@@ -1215,7 +1215,7 @@ I plan on using undersampling to get our metrics, due to the imbalance between Y
 
 Testing for sensitivity and specificity
 
-    ---R
+    ~~~ R
     test$Attrition = relevel(test$Attrition, ref = 'Yes')
     
     knn_model <- knn(balanced_data[,2:4], test[, c(2,3,4)], balanced_data[,1], prob = TRUE,  k = 5)
@@ -1235,7 +1235,7 @@ Testing for sensitivity and specificity
     new_data <- test %>% select(predictions, ID)
     
     new_data <- new_data[order(new_data$ID), ]
-    ---
+    ~~~ 
    
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -1255,7 +1255,7 @@ Testing for sensitivity and specificity
 
 comparing accuracy, sensitivity and specificity metric for both KNN and naive bayes
 
-    ---R
+    ~~~ R
     results_nb <- data.frame(Accuracy = accuracy_nb, Sensitivity = sensitivity_nb, Specificity =  specificity_nb, total = sensitivity_nb + specificity_nb)
     avg_nb = colMeans(results_nb[, c("Accuracy", "Sensitivity", "Specificity", "total")])
     avg_nb
@@ -1284,7 +1284,7 @@ comparing accuracy, sensitivity and specificity metric for both KNN and naive ba
     barplot(t(combined_results[4, ]), beside = TRUE, col = rainbow(2),
             main = "Specificity Comparison of both knn and nb models",
             ylab = "Specificity + Sensitivity (%)", legend.text = names(combined_results[4, ]))
-    ---
+    ~~~
     
 <div class="row justify-content-sm-center">
     <div class="col-sm-4 mt-3 mt-md-0" >
