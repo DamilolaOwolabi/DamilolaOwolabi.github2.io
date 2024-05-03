@@ -268,8 +268,122 @@ Getting a  box plot for the summary
     The Summary of the ABV variable
 </div>
 
-** Visualizing the distribution based on the states using a box plot **
+**Visualizing the distribution based on the states using a box plot **
 
 Getting the boxplot for the state with the highest ABV (Kentucky)
 
+      ---
+      merged_df[grep("KY", merged_df$State), ] %>% group_by(State) %>% ggplot(aes(y = ABV, x = State, fill = State)) + geom_boxplot() + ggtitle("The distribution of the ABV based on the state") + th eme(legend.position = "none")
+      ---
+      
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic8.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    The distribution of ABV based on the highest ABV state (KY)
+</div>
+
+Getting the boxplot for all states
+
+      ---
+      merged_df %>% group_by(State) %>% ggplot(aes(y = ABV, x = State, fill = State)) + geom_boxplot() + ggtitle("The distribution of the ABV based on the state") + theme(legend.position = "none")
+      ---
+      
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic9.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    The distribution of ABV based on all the states in the US
+</div>
+
+Visualizing the distribution based on the city using a barchart
+
+      ---
+      merged_df %>% group_by(City) %>% ggplot(aes(y = merged_df$ABV, x = City, fill = State)) + geom_b oxplot() + ggtitle("The distribution of the ABV based on the City") + theme(legend.position = "n one")
+      ---
+      
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic10.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+    The distribution of ABV based on all the cities in the US
+</div>
+
+Visualizing the distribution based on the cities in Kentucky using a barchart
+
+      ---
+      merged_df[grep("KY", merged_df$State), ] %>% ggplot(aes(y = ABV, x = City, fill = City)) + geom_ boxplot() + ggtitle("The distribution of the ABV based on cities in Kentucky") + theme(legend.po sition = "none")
+      ---
+      
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic11.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+     distribution based on the cities in Kentucky using a barchart
+</div>
+
+Visualizing the distribution based on the Brewery ID using a scatterplot
+
+      ---
+      merged_df %>% group_by(Brewery_id) %>% ggplot(aes(y = ABV, x = Brewery_id, fill = Brewery_id)) + geom_point() + ggtitle("The distribution of the ABV based on each Brewery ID")
+      ---
+      
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic12.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+     distribution based on the Brewery ID using a scatterplot
+</div>
+
+Visualizing the distribution based on the weight in ounces using a barplot
+
+      ---
+      merged_df %>% group_by(Ounces) %>% ggplot(aes(y = ABV, x = Ounces, fill = Ounces)) + geom_bar(st at = "identity") + ggtitle("The distribution of the ABV based on the weight of the beer drink (i n ounces")
+      ---
+      
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic13.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+     Distribution based on the weight in ounces using a barplot
+</div>
+
+Visualizing the distribution based on the IBU using a scatterplot
+
+      ---
+      merged_df %>% group_by(IBU) %>% ggplot(aes(y = ABV, x = IBU, color = State)) + geom_point() + gg title("The distribution of the ABV based on each IBU") + theme(legend.position = "none")
+      ---
+      
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic14.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+     Distribution based on the IBU using a scatterplot
+</div>
+
+**Analysis: ** Looking at the summary statistics, the minimum value is 0.027, the 1st quartile value is 0.05, the Median value is 0.057, the 3rd Quarter is 0.068, the maximum value is 0.125. Valuable insight were also gotten from different categorical variables related to the ABV variable. Looking at the distribution based on the states, the state of Kentucky has the highest ABV value, the state of Oregon has the lowest ABV values, and there were 2 outliers in the plot, belonging the the states of Kentucky and Oregon. Looking at the distribution based on the brewery ID, the Beer “London Balling” with brewery ID #2 has the highest alcoholic content, while the beer “Totally Randler” with brewery ID# 81 has the lowest alcoholic content.
+
+
+#### Agenda 6.5 : Investigating the summary statistics of the International Business Unit Variable
 
