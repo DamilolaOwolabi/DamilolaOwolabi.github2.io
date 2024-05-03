@@ -23,14 +23,14 @@ horizontal: false
   {% if page.horizontal %}
   <div class="container">
     <div class="row row-cols-2">
-    {% for project in sorted_test_projects %}
+    {% for test_projects in sorted_test_projects %}
       {% include test_projects_horizontal.liquid %}
     {% endfor %}
     </div>
   </div>
   {% else %}
   <div class="grid">
-    {% for project in sorted_test_projects %}
+    {% for test_projects in sorted_test_projects %}
       {% include test_projects.liquid %}
     {% endfor %}
   </div>
@@ -56,7 +56,7 @@ horizontal: false
   </div>
   {% else %}
   <div class="grid">
-    {% for project in sorted_test_projects %}
+    {% for test_projects in sorted_test_projects %}
       {% include test_projects.liquid %}
     {% endfor %}
   </div>
