@@ -180,10 +180,10 @@ collections:
     permalink: /test_projects/:path/
   videos:
     output: true
-    permalink: /videos/:path
+    permalink: /videos/:path/
   Apps:
     output: true
-    permalink: /Apps/:path
+    permalink: /Apps/:path/
 
 announcements:
   enabled: true
