@@ -2,7 +2,7 @@
 layout: page
 title: test_projects
 permalink: /test_Projects/
-description: A growing collection of test_projects done throughout my Data Science journey. test #2s
+description: A growing collection of test_projects done throughout my Data Science journey. test2
 nav: false
 nav_order: 9
 display_categories: [school, fun]
