@@ -184,9 +184,6 @@ collections:
   Apps:
     output: true
     permalink: /Apps/:path
-  cv:
-    output: true
-    permalink: /cv/:path
 
 announcements:
   enabled: true
