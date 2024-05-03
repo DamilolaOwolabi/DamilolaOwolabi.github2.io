@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Frito Lay Talent Attrition Analysis
+title: Budweiser EDA
 description: The purpose of the project is to analyse the IBU and ABV % of different beers and breweries from different US state using R.
-img: assets/img/DS_6306_Project_2/budweiser.jpeg
+img: assets/img/DS_6306_Project1/Thunbnails/budweiser.jpeg
 importance: 3
 category: school
 ---
