@@ -111,7 +111,7 @@ Load files and confirm, how many breweries are located in each state?
 
 Print the first 6 observations and the last six observations to check the merged file.
 
-      ---
+      --- R
       merged_df = merge(Beers,Breweries, by.x = "Brewery_id", by.y = "Brew_ID") #joining when keys do not match
       head(merged_df,6) #to show the first 6 observations
       ---
@@ -133,7 +133,7 @@ Print the first 6 observations and the last six observations to check the merged
 
 Address the missing values in each column
 
-      ---
+      --- R
       #merged_df %>% is.na() #check for missing values , ABV and IBU
       #Cleaning the data
       merged_df <- merged_df %>% na.omit() 
@@ -156,7 +156,7 @@ Address the missing values in each column
 
 mean of ABV by State and bar chart
 
-      ---
+      --- R
       #create a new df to add Mean ABV % 
     merged_df1 <- merged_df %>% group_by(State) %>% summarize(meanABV = mean(ABV, na.rm = TRUE)) #ad d column meanABV with the mean of ABV. 
     #confirm meanABV has been added 
@@ -186,7 +186,7 @@ mean of ABV by State and bar chart
 
 mean of IBU by State and bar chart
 
-      ---
+      --- R
       #repeat with IBU
     #create a new dataframe with 
     merged_df2 <- merged_df %>% group_by(State) %>% summarize(meanIBU = mean(IBU, na.rm = TRUE)) #ad d column meanABV with the mean of IBU. 
@@ -216,7 +216,7 @@ mean of IBU by State and bar chart
 
 Which state has the maximum alcoholic (ABV) beer
 
-      ---
+      --- R
       merged_df <- merged_df %>%  filter(!is.na(ABV)) 
       merged_df %>% group_by(State) %>% ggplot(aes(x = State, y = ABV, fill = State)) + theme(legend.p osition = "none") + geom_boxplot()  + ggtitle("Stem and Box plot of the ABV Values for each stat e")
       ---
@@ -233,7 +233,7 @@ Which state has the maximum alcoholic (ABV) beer
 
 Which state has the most bitter (IBU) beer?
 
-      ---
+      --- R
       merged_df %>% group_by(State) %>% ggplot(aes(x = State, y = IBU, fill = State)) + theme(legend.p osition = "none") + geom_boxplot()  + ggtitle("Stem and Box plot of the IBU Values for each stat e")
       ---
       
@@ -254,7 +254,7 @@ Which state has the most bitter (IBU) beer?
 
 Getting a  box plot for the summary
 
-      ---
+      --- R
       merged_df %>% group_by(ABV) %>% ggplot(aes(y = ABV)) + geom_boxplot(color = 'orange') + ggtitle ("The summary statistics of the ABV variable") + theme(legend.position = "none")
       ---
       
@@ -272,7 +272,7 @@ Getting a  box plot for the summary
 
 Getting the boxplot for the state with the highest ABV (Kentucky)
 
-      ---
+      --- R
       merged_df[grep("KY", merged_df$State), ] %>% group_by(State) %>% ggplot(aes(y = ABV, x = State, fill = State)) + geom_boxplot() + ggtitle("The distribution of the ABV based on the state") + th eme(legend.position = "none")
       ---
       
@@ -288,7 +288,7 @@ Getting the boxplot for the state with the highest ABV (Kentucky)
 
 Getting the boxplot for all states
 
-      ---
+      --- R
       merged_df %>% group_by(State) %>% ggplot(aes(y = ABV, x = State, fill = State)) + geom_boxplot() + ggtitle("The distribution of the ABV based on the state") + theme(legend.position = "none")
       ---
       
@@ -304,7 +304,7 @@ Getting the boxplot for all states
 
 Visualizing the distribution based on the city using a barchart
 
-      ---
+      --- R
       merged_df %>% group_by(City) %>% ggplot(aes(y = merged_df$ABV, x = City, fill = State)) + geom_b oxplot() + ggtitle("The distribution of the ABV based on the City") + theme(legend.position = "n one")
       ---
       
@@ -320,7 +320,7 @@ Visualizing the distribution based on the city using a barchart
 
 Visualizing the distribution based on the cities in Kentucky using a barchart
 
-      ---
+      --- R
       merged_df[grep("KY", merged_df$State), ] %>% ggplot(aes(y = ABV, x = City, fill = City)) + geom_ boxplot() + ggtitle("The distribution of the ABV based on cities in Kentucky") + theme(legend.po sition = "none")
       ---
       
@@ -336,7 +336,7 @@ Visualizing the distribution based on the cities in Kentucky using a barchart
 
 Visualizing the distribution based on the Brewery ID using a scatterplot
 
-      ---
+      --- R
       merged_df %>% group_by(Brewery_id) %>% ggplot(aes(y = ABV, x = Brewery_id, fill = Brewery_id)) + geom_point() + ggtitle("The distribution of the ABV based on each Brewery ID")
       ---
       
@@ -352,7 +352,7 @@ Visualizing the distribution based on the Brewery ID using a scatterplot
 
 Visualizing the distribution based on the weight in ounces using a barplot
 
-      ---
+      --- R
       merged_df %>% group_by(Ounces) %>% ggplot(aes(y = ABV, x = Ounces, fill = Ounces)) + geom_bar(st at = "identity") + ggtitle("The distribution of the ABV based on the weight of the beer drink (i n ounces")
       ---
       
@@ -368,7 +368,7 @@ Visualizing the distribution based on the weight in ounces using a barplot
 
 Visualizing the distribution based on the IBU using a scatterplot
 
-      ---
+      --- R
       merged_df %>% group_by(IBU) %>% ggplot(aes(y = ABV, x = IBU, color = State)) + geom_point() + gg title("The distribution of the ABV based on each IBU") + theme(legend.position = "none")
       ---
       
@@ -387,3 +387,225 @@ Visualizing the distribution based on the IBU using a scatterplot
 
 #### Agenda 6.5 : Investigating the summary statistics of the International Business Unit Variable
 
+Getting a  box plot for the summary
+
+      --- R
+      merged_df %>% group_by(IBU) %>% ggplot(aes(y = IBU)) + geom_boxplot(color = 'brown') + ggtitle ("The summary statistics of the IBU variable") + theme(legend.position = "none") 
+      ---
+      
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic15.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+     Summary Statistics for the IBU variable
+</div>
+
+Visualizing the distribution based on the states using a box plot
+
+      --- R
+      merged_df %>% group_by(State) %>% ggplot(aes(y = IBU, x = State, fill = State)) + geom_boxplot() + ggtitle("The distribution of the IBU based on the state") + theme(legend.position = "none")
+      ---
+      
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic21.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+     distribution based on the states using a box plot
+</div>
+
+Visualizing the distribution based on the city using a barchart
+
+      --- R
+      merged_df %>% group_by(City) %>% ggplot(aes(y = merged_df$IBU, x = City, fill = State)) + geom_b oxplot() + ggtitle("The distribution of the IBU based on the City")  + theme(legend.position = "none")
+      ---
+      
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic22.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+     distribution based on the city using a barchart
+</div>
+
+Visualizing the distribution based on the cities in Kentucky using a barchart
+
+      --- R
+      merged_df[grep("KY", merged_df$State), ] %>% ggplot(aes(y = IBU, x = City, fill = City)) + geom_ boxplot() + ggtitle("The distribution of the IBU based on cities in Kentucky")
+      ---
+      
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic23.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+     distribution based on the cities in Kentucky using a barchart
+</div>
+
+Visualizing the distribution based on the Brewery ID using a scatterplot
+
+      --- R
+      merged_df %>% group_by(Brewery_id) %>% ggplot(aes(y = IBU, x = Brewery_id, fill = Brewery_id)) + geom_point() + ggtitle("The distribution of the IBU based on each Brewery ID")
+      ---
+      
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic24.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+     distribution based on the Brewery ID using a scatterplot
+</div>
+
+Visualizing the distribution based on the weight in ounces using a barplot
+
+      --- R
+      merged_df %>% group_by(Ounces) %>% ggplot(aes(y = IBU, x = Ounces, fill = Ounces)) + geom_bar(st at = "identity") + ggtitle("The distribution of the IBU based on the weight of the beer drink (i n ounces"
+      ---
+      
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic25.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+     distribution based on the weight in ounces using a barplot
+</div>
+
+The bar just shows the frequency distribution of the IBU for each weight 
+
+      --- R
+      merged_df %>% group_by(IBU) %>% ggplot(aes(y = ABV, x = IBU, color = State)) + geom_point() + gg title("The distribution of the ABV based on each IBU")  + theme(legend.position = "none")
+      ---
+      
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic26.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+     distribution of the ABV based on the IBU
+</div>
+
+**Analysis: ** Looking at the summary statistics, the minimum value is 4, the 1st quartile value is 21, the Median value is 35, the 3rd Quarter is 64, the maximum value is 138. Valuable insight were also gotten from different categorical variables related to the ABV variable. Looking at the distribution based on the states, the state of Oregon has the highest ABV value, and the state of Carlifornia has the lowest ABV values. Looking at the distribution based on the brewery ID, the Beer “Bitter B***th Imperial IPA” with brewery ID #2 has the highest alcoholic content, while the beer “Summer Solstice” with brewery ID# 81 has the lowest alcoholic content.
+
+
+#### Agenda 7: Investigating the relationship between the ABV variable and IBU variable
+
+      --- R
+      merged_df %>% group_by(IBU) %>% ggplot(aes(y = ABV, x = IBU, color = State)) + geom_point() + gg title("The distribution of the ABV based on each IBU") + theme(legend.position = "none")
+      ---
+      
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic14.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+     distribution of the ABV based on the IBU
+</div>
+
+**Analysis: ** There is a positiver linear relationship between the bitterness of the beer and its alcoholic content. We can see from the plot above that for every high value in IBU there is a corresponding high value in ABV.
+
+
+#### Agenda 8: Investigating the difference between the IPAs (India Pale Ales) and other types of ales in terms of their IPA and IBU values using KNN classification
+
+We plan on visualizing the dataset
+
+      ---
+      # Using KNNs
+      set.seed(123)
+      # Step 1: Data Preprocessing
+      #Extracting relevant data for the knn
+      Budweiser_df = merged_df %>% filter(str_detect(Style, "IPA") | (str_detect(Style, "Ale"))) #filt ering the IPA and different ale beers using str_filter() & str_detect
+      #grouping all IPA and Ale variables to groupnames
+      Budweiser_df2 <- Budweiser_df %>%
+      mutate(Style = case_when(
+      grepl("IPA", Style, ignore.case = TRUE) ~ "IPA",
+      grepl("Ale", Style, ignore.case = TRUE) ~ "Ale",
+      TRUE ~ Style  # Keep the original name if no match
+      ))
+      # Step 2: Data Exploration
+      #Visualizing the distribution of IBU and ABV values for the IPA and beers using a box plot Budweiser_df2 %>% group_by(IBU) %>% ggplot(aes(y = IBU)) + geom_boxplot(color = 'violet') + ggti tle("The summary statistics of the IBU variable") + theme(legend.position = "none")
+      Budweiser_df2 %>% group_by(ABV) %>% ggplot(aes(y = ABV)) + geom_boxplot(color = 'purple') + ggti tle("The summary statistics of the ABV variable") + theme(legend.position = "none")
+      ---
+      
+ <div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic15.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic16.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic17.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+     Visualizing the dataset
+</div> 
+
+Next we plan on looking at the metrics and 2 sample welch ttests
+
+      ---
+      # Step 3: Data Splitting
+      #sorting the datasets into training and test data, Using an 80-20 split
+      split_perc <- 0.80
+      trainPosition = sample(1:nrow(Budweiser_df2)[1],round(split_perc * nrow(Budweiser_df2)[1])) #get ting the index for the training dataset
+      trainData <- Budweiser_df2[trainPosition, ] testData <- Budweiser_df2[-trainPosition, ]
+      
+      # Step 4: Building the KNN model
+      classifications <- knn(trainData[, c("IBU", "ABV")], testData[, c("IBU", "ABV")], trainData$Styl e, prob = TRUE, k = 5)
+      #table(classifications, testData$Style)
+      # Step 5: Model Evaluation
+      CM = confusionMatrix(table(classifications,testData$Style))
+      CM
+      
+      #Statistical Evidence
+      #Using ttest to compare the mean of IBU and ABV variables Budweiser_IPA = Budweiser_df2 %>% filter(str_detect(Style, "IPA")) Budweiser_Ale = Budweiser_df2 %>% filter(str_detect(Style, "Ale")) t.test(Budweiser_IPA$IBU, Budweiser_Ale$IBU
+      ---
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic18.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+     The classification metrics of the model
+</div>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/DS_6306_Project1/pic27.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="caption">
+     The ttest of the model
+</div>
+
+**Results: **  Using the KNN classificayion, the accuracy was found to be 86%, the Missclassification rate 14%, sensitivity, 90.4%, and the specitivity, 79.8%. Based on the welch’s 2 sample t-test, there is overwhelming evidence to suggest that there is a significant difference between the Ale and IPA drinks in term of their IBU (p-value < 2.2e- 16) and the ABV (P-value < 2.2e-16).
+
+
+# Conclusion
+
+Utilizing various file manipulation, string manipulation and data visualization techniques, we were able to find valuable insight into the data of US craft beers and US breweries, over the past years.
+
+We were able to discover the distribution of breweries and beers, across different US states. We were also able to address missing values within our generated data, and investigated the effectiveness of the missing values within the dataset. From our investigation, we proved that Removing the missing values didnt affect our data. Statistical analysis was done to find and visualize valuable statistical data like states that produced drinks with the highest average values of the Alcohol by Volume variable and the International Bitterness Unit Variable, the stateswith most alcoholic drink and the most bitter drink. We were able to provide more statistical insight into the Alcohol by beverage data, by looking into their mean, maximum and minimum values, and looking into how they affect different variables like the IBU, the brewery ID, and the states.
+
+Lastly we were able to use kNN, and a ttest to prove that there is a significant relationship between the IPA drinks and the Ale drinks.
