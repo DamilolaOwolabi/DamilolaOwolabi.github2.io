@@ -20,6 +20,6 @@ children:
   - title: Apps
     permalink: /Apps/
   - title: divider
-  - title: test_projects
-    permalink: /test_projects/
+  - title: test_Projects
+    permalink: /test_Projects/
 ---

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: test_projects
-permalink: /test_projects/
+permalink: /test_Projects/
 description: A growing collection of test_projects done throughout my Data Science journey.
 nav: true
 nav_order: 9
