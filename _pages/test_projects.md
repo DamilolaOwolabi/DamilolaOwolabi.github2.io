@@ -1,16 +1,15 @@
 ---
 layout: page
-title: test_projects
+title: test_Projects
 permalink: /test_Projects/
-description: A growing collection of test_projects done throughout my Data Science journey. test2
+description: A growing collection of test_Projects done throughout my Data Science journey. test2
 nav: false
 nav_order: 9
-display_categories: [school, fun]
 horizontal: false
 ---
 
-<!-- pages/test_projects.md -->
-<div class="test_projects">
+<!-- pages/test_Projects.md -->
+<div class="test_Projects">
 {% if site.enable_project_categories and page.display_categories %}
   <!-- Display categorized test_Projects -->
   {% for category in page.display_categories %}
