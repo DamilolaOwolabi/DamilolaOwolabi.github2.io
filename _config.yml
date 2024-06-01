@@ -177,7 +177,7 @@ collections:
     permalink: /projects/:path/
   test_projects:
     output: true
-    permalink: /test_projects/:path/
+    permalink: /test_Projects/:path/
   videos:
     output: true
     permalink: /videos/:path/
