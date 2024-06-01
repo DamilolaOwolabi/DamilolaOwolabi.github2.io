@@ -65,7 +65,7 @@ Loaded files and confirm, how many breweries are located in each state?
       geom_bar(stat = "identity") + theme(legend.position = "none") + geom_text(aes(label = n, y = n +1.5)) +
       ggtitle("Count of Breweries by State") + ylab("Count of Breweries") + xlab("State") + 
       theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-      geom_hline(yintercept = mean_count, linetype = "dotted", color = "red") # to show the mean.
+      geom_hline(yintercept = mean_count, linetype = "dotted", color = "red") # to show the mean. #ffh
       ---
       
 <div class="row">
